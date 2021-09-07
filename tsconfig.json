@@ -3,6 +3,8 @@
     "target": "ESNext",
     "module": "ESNext",
 
+    "declaration": true,
+
     "allowJs": false,
     "outDir": "./dist",
 
