@@ -33,7 +33,7 @@ jobs:
           for file in `find src -type f`; do
             sed -ri "s/from '([^']+)\/api'/from '\1\/api\/index.js'/" $file
             sed -ri "s/from '([^']+)\/models'/from '\1\/models\/index.js'/" $file
-            sed -ri "s/from '([^']+)'/from '\1.js'/" $file
+            sed -ri "s/from '([^']+(\?\!\.js))'/from '\1.js'/" $file
           done
       - name: Build
         run: npm run build
