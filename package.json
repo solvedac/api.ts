@@ -1,6 +1,6 @@
 {
   "name": "@solvedac-community/api",
-  "version": "3.2021.09+b1",
+  "version": "3.2021.09+b2",
   "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
   "main": "index.js",
   "scripts": {
