@@ -6,8 +6,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": "./dist/index.js",
     "./apis": "./dist/apis/index.js",
-    "./models": "./dist/apis/models.js",
+    "./models": "./dist/models/index.js",
     "./*": "./dist/*.js"
   },
   "typesVersions": {
