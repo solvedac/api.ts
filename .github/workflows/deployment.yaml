@@ -31,6 +31,11 @@ jobs:
       - name: Tricky TSC Safety
         run: |
           sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
+      - name: Make Deno Friendly
+        run: |
+          for file in `find src -type f -name "index.ts"`; do
+            cp $file `echo $file | sed s/index/mod/`
+          done
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -39,4 +44,4 @@ jobs:
           body: |
             This Pull Request will update the typescript sources.
             It is automatically created by GitHub Actions.
-          labels: automated
+          labels: follow-up
