@@ -30,8 +30,8 @@ jobs:
           sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
       - name: Tricky TSC ESM
         run: |
-          for file in `find unofficial-documentation/src -type f`; do
-            sed -ri 's/from \'([^\']+)\'/from \'$1.js\'/' $file
+          for file in `find src -type f`; do
+            sed -ri "s/from '([^']+)'/from '\1.js'/" $file
           done
       - name: Build
         run: npm run build
