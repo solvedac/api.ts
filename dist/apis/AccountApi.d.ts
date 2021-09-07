@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import { InlineObject, InlineResponse200 } from '../models';
+import { InlineObject, InlineResponse200 } from '../models/index.js';
 export interface UpdateAccountSettingsRequest {
     inlineObject: InlineObject;
 }

@@ -17,7 +17,7 @@ import * as runtime from '../runtime';
 import {
     InlineResponse2001,
     Schema2,
-} from '../models';
+} from '../models/index.js';
 
 export interface GetProblemByIdRequest {
     problemId: number;

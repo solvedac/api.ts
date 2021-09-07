@@ -17,7 +17,7 @@ import * as runtime from '../runtime';
 import {
     InlineObject,
     InlineResponse200,
-} from '../models';
+} from '../models/index.js';
 
 export interface UpdateAccountSettingsRequest {
     inlineObject: InlineObject;
