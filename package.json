@@ -9,12 +9,12 @@
     ".": "./dist/index.js",
     "./apis": "./dist/apis/index.js",
     "./models": "./dist/models/index.js",
-    "./*": "./dist/*"
+    "./*": "./*"
   },
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/*"
+        "./*"
       ],
       "apis": [
         "./dist/apis/index.d.ts"
