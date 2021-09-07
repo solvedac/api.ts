@@ -1,0 +1,24 @@
+{
+  "name": "@solvedac-community/api",
+  "version": "3.2021.09+b1",
+  "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
+  "main": "index.js",
+  "scripts": {
+    "generate": "openapi-generator-cli batch --clean typescript-fetch.yaml",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solvedac/api.ts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/solvedac/api.ts/issues"
+  },
+  "homepage": "https://github.com/solvedac/api.ts#readme",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.1",
+    "typescript": "^4.4.2"
+  }
+}

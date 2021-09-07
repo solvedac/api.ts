@@ -16,20 +16,26 @@ jobs:
           distribution: adopt
           java-version: 11
       - uses: actions/setup-node@v2
-      - name: Install OpenAPI Generator CLI
-        run: npm install @openapitools/openapi-generator-cli -g
-      - name: Treat OpenAPI Version as 3.0.x (Because of no support)
+      - name: Install Dependencies
+        run: npm install
+      - name: Override OpenAPI Version to 3.0.x (generator doe snot support 3.1)
         run: |
           for file in `find unofficial-documentation/src -type f`; do
             sed -i 's/openapi: "3.1.0"/openapi: "3.0.0"/' $file
           done
       - name: Generate
-        run: npx @openapitools/openapi-generator-cli batch typescript-fetch.yaml
+        run: npm run generate
+      - name: Update Version
+        run: |
+          sed -ri "s/\"version\": \"[^\"]+\"/\"version\": \"`sed -rn 's/^.*  version: "([^"]+)".*$/\1/p' unofficial-documentation/src/openapi.yaml`\"/" package.json
+      - name: Tricky TSC Safety
+        run: |
+          sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Migrate OpenAPI spec from solvedac/unofficial-documentation
-          title: Migrate OpenAPI Specification from solvedac/unofficial-documentation
+          commit-message: Follow-up solvedac/unofficial-documentation
+          title: Follow-up solvedac/unofficial-documentation
           body: |
             This Pull Request will update the typescript sources.
             It is automatically created by GitHub Actions.
