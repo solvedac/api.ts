@@ -25,14 +25,14 @@ jobs:
           done
       - name: Generate
         run: npm run generate
+      - name: Tricky TSC Safety
+        run: |
+          sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
       - name: Build
         run: npm run build
       - name: Update Version
         run: |
           sed -ri "s/\"version\": \"[^\"]+\"/\"version\": \"`sed -rn 's/^.*  version: "([^"]+)".*$/\1/p' unofficial-documentation/src/openapi.yaml`\"/" package.json
-      - name: Tricky TSC Safety
-        run: |
-          sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
       - name: Make Deno Friendly
         run: |
           for file in `find src -type f -name "index.ts"`; do
