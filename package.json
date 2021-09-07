@@ -2,7 +2,20 @@
   "name": "@solvedac-community/api",
   "version": "3.2021.09+b2",
   "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    "./apis": "./dist/apis/index.js",
+    "./models": "./dist/apis/models.js",
+    "./*": "./dist/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "scripts": {
     "generate": "openapi-generator-cli batch --clean typescript-fetch.yaml",
     "build": "rimraf dist && tsc"
