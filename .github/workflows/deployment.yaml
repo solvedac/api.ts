@@ -1,0 +1,21 @@
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: solvedac/unofficial-documentation
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 11
+      - uses: actions/setup-node@v2
+      - name: Install OpenAPI Generator CLI
+        run: npm install @openapitools/openapi-generator-cli -g
+      - name: Generate
+        run: |
+          mkdir dist;
+          npx @openapitools/openapi-generator-cli batch typescript-fetch.yaml

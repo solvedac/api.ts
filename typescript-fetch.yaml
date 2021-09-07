@@ -1,0 +1,9 @@
+inputSpec: "src/openapi.yaml"
+generatorName: "typescript-fetch"
+outputDir: "dist"
+validateSpec: false
+generateAliasAsModel: true
+additionalProperties:
+  supportsES6: true
+  typescriptThreePlus: true
+  withoutRuntimeChecks: true
