@@ -4,6 +4,7 @@
   "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
   "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     "./apis": "./dist/apis/index.js",
     "./models": "./dist/apis/models.js",
