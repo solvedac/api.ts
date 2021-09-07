@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: solvedac/unofficial-documentation
+          path: unofficial-documentation
       - uses: actions/setup-java@v2
         with:
           distribution: adopt
