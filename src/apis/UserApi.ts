@@ -16,7 +16,7 @@
 import * as runtime from '../runtime';
 import {
     InlineResponse2006,
-} from '../models';
+} from '../models/index.js';
 
 export interface GetUserProblemStatsRequest {
     handle: string;

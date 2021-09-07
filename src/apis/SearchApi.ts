@@ -19,7 +19,7 @@ import {
     InlineResponse2003,
     InlineResponse2004,
     InlineResponse2005,
-} from '../models';
+} from '../models/index.js';
 
 export interface GetSearchAutoCompletionRequest {
     query: string;

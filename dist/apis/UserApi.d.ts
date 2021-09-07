@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import { InlineResponse2006 } from '../models';
+import { InlineResponse2006 } from '../models/index.js';
 export interface GetUserProblemStatsRequest {
     handle: string;
 }

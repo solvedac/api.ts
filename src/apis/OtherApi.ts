@@ -16,7 +16,7 @@
 import * as runtime from '../runtime';
 import {
     Schema7,
-} from '../models';
+} from '../models/index.js';
 
 /**
  * 

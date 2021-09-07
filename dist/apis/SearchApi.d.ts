@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import { InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2005 } from '../models';
+import { InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2005 } from '../models/index.js';
 export interface GetSearchAutoCompletionRequest {
     query: string;
 }

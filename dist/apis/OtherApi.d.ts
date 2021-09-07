@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import { Schema7 } from '../models';
+import { Schema7 } from '../models/index.js';
 /**
  *
  */
