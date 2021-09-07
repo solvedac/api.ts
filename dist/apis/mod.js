@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
-export * from './AccountApi';
-export * from './DefaultApi';
-export * from './OtherApi';
-export * from './ProblemApi';
-export * from './SearchApi';
-export * from './UserApi';
+export * from './AccountApi.js';
+export * from './DefaultApi.js';
+export * from './OtherApi.js';
+export * from './ProblemApi.js';
+export * from './SearchApi.js';
+export * from './UserApi.js';

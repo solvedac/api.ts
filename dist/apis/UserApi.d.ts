@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import { InlineResponse2006 } from '../models/index.js';
 export interface GetUserProblemStatsRequest {
     handle: string;

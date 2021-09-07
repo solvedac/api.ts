@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import {
     InlineResponse2006,
 } from '../models/index.js';
