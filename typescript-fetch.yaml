@@ -1,6 +1,6 @@
 inputSpec: "unofficial-documentation/src/openapi.yaml"
 generatorName: "typescript-fetch"
-outputDir: "dist"
+outputDir: "src"
 validateSpec: false
 generateAliasAsModel: true
 additionalProperties:
