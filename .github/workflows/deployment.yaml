@@ -25,6 +25,8 @@ jobs:
           done
       - name: Generate
         run: npm run generate
+      - name: Build
+        run: npm run build
       - name: Update Version
         run: |
           sed -ri "s/\"version\": \"[^\"]+\"/\"version\": \"`sed -rn 's/^.*  version: "([^"]+)".*$/\1/p' unofficial-documentation/src/openapi.yaml`\"/" package.json
