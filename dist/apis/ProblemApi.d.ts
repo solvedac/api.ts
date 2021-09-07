@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import { InlineResponse2001, Schema2 } from '../models/index.js';
 export interface GetProblemByIdRequest {
     problemId: number;
