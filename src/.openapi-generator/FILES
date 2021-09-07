@@ -1,5 +1,9 @@
+apis/AccountApi.ts
 apis/DefaultApi.ts
-apis/DefaultApi.ts
+apis/OtherApi.ts
+apis/ProblemApi.ts
+apis/SearchApi.ts
+apis/UserApi.ts
 apis/index.ts
 index.ts
 models/index.ts
