@@ -31,9 +31,10 @@ jobs:
       - name: Tricky TSC ESM
         run: |
           for file in `find src -type f`; do
-            sed -ri "s/from '([^']+)\/apis'/from '\1\/apis\/index'/" $file
-            sed -ri "s/from '([^']+)\/models'/from '\1\/models\/index'/" $file
+            sed -ri "s/from '([^']+)\/apis'/from '\1\/apis\/index.js'/" $file
+            sed -ri "s/from '([^']+)\/models'/from '\1\/models\/index.js'/" $file
             sed -ri "s/from '([^']+)'/from '\1.js'/" $file
+            sed -ri "s/from '([^']+\.js)\.js'/from '\1'/" $file
           done
       - name: Build
         run: npm run build
