@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { Schema7 } from '../models/index.js';
+import { SolvedAcStatistics } from '../models/index.js';
 /**
  *
  */
@@ -19,10 +19,10 @@ export declare class OtherApi extends runtime.BaseAPI {
      * solved.ac 통계를 가져옵니다.
      * solved.ac 통계 가져오기
      */
-    getSiteStatsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Schema7>>;
+    getSiteStatsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SolvedAcStatistics>>;
     /**
      * solved.ac 통계를 가져옵니다.
      * solved.ac 통계 가져오기
      */
-    getSiteStats(initOverrides?: RequestInit): Promise<Schema7>;
+    getSiteStats(initOverrides?: RequestInit): Promise<SolvedAcStatistics>;
 }
