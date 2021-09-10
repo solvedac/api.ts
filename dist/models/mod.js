@@ -1,5 +1,3 @@
-/* tslint:disable */
-/* eslint-disable */
 /**
  * 난이도 아이콘 표시 정책입니다.
  * @export
@@ -65,16 +63,26 @@ export var Schema1ProblemSortByEnum;
     Schema1ProblemSortByEnum["Random"] = "random";
 })(Schema1ProblemSortByEnum || (Schema1ProblemSortByEnum = {}));
 /**
+ * 언어입니다.
+ * @export
+ * @enum {string}
+ */
+export var Schema10;
+(function (Schema10) {
+    Schema10["Ko"] = "ko";
+    Schema10["En"] = "en";
+})(Schema10 || (Schema10 = {}));
+/**
 * @export
 * @enum {string}
 */
-export var Schema11TypeEnum;
-(function (Schema11TypeEnum) {
-    Schema11TypeEnum["Community"] = "community";
-    Schema11TypeEnum["University"] = "university";
-    Schema11TypeEnum["Company"] = "company";
-    Schema11TypeEnum["HighSchool"] = "high_school";
-})(Schema11TypeEnum || (Schema11TypeEnum = {}));
+export var Schema12TypeEnum;
+(function (Schema12TypeEnum) {
+    Schema12TypeEnum["Community"] = "community";
+    Schema12TypeEnum["University"] = "university";
+    Schema12TypeEnum["Company"] = "company";
+    Schema12TypeEnum["HighSchool"] = "high_school";
+})(Schema12TypeEnum || (Schema12TypeEnum = {}));
 /**
 * @export
 * @enum {string}
@@ -90,21 +98,11 @@ export var Schema6ClassDecorationEnum;
  * @export
  * @enum {string}
  */
-export var Schema8;
-(function (Schema8) {
-    Schema8["Default"] = "default";
-    Schema8["HideWarn"] = "hide-warn";
-    Schema8["Hide"] = "hide";
-})(Schema8 || (Schema8 = {}));
-/**
- * 언어입니다.
- * @export
- * @enum {string}
- */
 export var Schema9;
 (function (Schema9) {
-    Schema9["Ko"] = "ko";
-    Schema9["En"] = "en";
+    Schema9["Default"] = "default";
+    Schema9["HideWarn"] = "hide-warn";
+    Schema9["Hide"] = "hide";
 })(Schema9 || (Schema9 = {}));
 /**
 * @export
