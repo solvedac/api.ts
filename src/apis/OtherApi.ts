@@ -15,7 +15,7 @@
 
 import * as runtime from '../runtime.js';
 import {
-    Schema7,
+    SolvedAcStatistics,
 } from '../models/index.js';
 
 /**
@@ -27,7 +27,7 @@ export class OtherApi extends runtime.BaseAPI {
      * solved.ac 통계를 가져옵니다.
      * solved.ac 통계 가져오기
      */
-    async getSiteStatsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Schema7>> {
+    async getSiteStatsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SolvedAcStatistics>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -46,7 +46,7 @@ export class OtherApi extends runtime.BaseAPI {
      * solved.ac 통계를 가져옵니다.
      * solved.ac 통계 가져오기
      */
-    async getSiteStats(initOverrides?: RequestInit): Promise<Schema7> {
+    async getSiteStats(initOverrides?: RequestInit): Promise<SolvedAcStatistics> {
         const response = await this.getSiteStatsRaw(initOverrides);
         return await response.value();
     }

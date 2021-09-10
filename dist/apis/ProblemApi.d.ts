@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { InlineResponse2001, Schema2 } from '../models/index.js';
+import { InlineResponse2001, Schema } from '../models/index.js';
 export interface GetProblemByIdRequest {
     problemId: number;
 }
@@ -22,12 +22,12 @@ export declare class ProblemApi extends runtime.BaseAPI {
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
      */
-    getProblemByIdRaw(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Schema2>>;
+    getProblemByIdRaw(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Schema>>;
     /**
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
      */
-    getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<Schema2>;
+    getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<Schema>;
     /**
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
