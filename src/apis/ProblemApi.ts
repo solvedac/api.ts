@@ -16,7 +16,7 @@
 import * as runtime from '../runtime.js';
 import {
     InlineResponse2001,
-    Schema,
+    TaggedProblem,
 } from '../models/index.js';
 
 export interface GetProblemByIdRequest {
@@ -32,7 +32,7 @@ export class ProblemApi extends runtime.BaseAPI {
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
      */
-    async getProblemByIdRaw(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Schema>> {
+    async getProblemByIdRaw(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TaggedProblem>> {
         if (requestParameters.problemId === null || requestParameters.problemId === undefined) {
             throw new runtime.RequiredError('problemId','Required parameter requestParameters.problemId was null or undefined when calling getProblemById.');
         }
@@ -59,7 +59,7 @@ export class ProblemApi extends runtime.BaseAPI {
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
      */
-    async getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<Schema> {
+    async getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<TaggedProblem> {
         const response = await this.getProblemByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
