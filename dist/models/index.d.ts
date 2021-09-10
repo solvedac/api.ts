@@ -1,4 +1,35 @@
 /**
+ * 사용자가 사용할 수 있는 뱃지입니다.
+ * @export
+ * @interface Badge
+ */
+export interface Badge {
+    /**
+     * 뱃지의 ID입니다.
+     * @type {string}
+     * @memberof Badge
+     */
+    badgeId: string;
+    /**
+     * 뱃지 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Badge
+     */
+    badgeImageUrl: string;
+    /**
+     * 뱃지의 이름입니다.
+     * @type {string}
+     * @memberof Badge
+     */
+    displayName: string;
+    /**
+     * 뱃지의 설명입니다.
+     * @type {string}
+     * @memberof Badge
+     */
+    displayDescription: string;
+}
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}
@@ -487,10 +518,10 @@ export interface ProblemTagAliases {
 export interface ProblemTagDisplayNames {
     /**
      *
-     * @type {Schema9}
+     * @type {Schema10}
      * @memberof ProblemTagDisplayNames
      */
-    language?: Schema9;
+    language?: Schema10;
     /**
      * 태그의 이름입니다.
      * @type {string}
@@ -515,55 +546,55 @@ export interface RankedUser {
      * @type {string}
      * @memberof RankedUser
      */
-    handle?: string;
+    handle: string;
     /**
      * 사용자의 자기소개입니다.
      * @type {string}
      * @memberof RankedUser
      */
-    bio?: string;
+    bio: string;
     /**
      * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Schema11>}
+     * @type {Array<Schema12>}
      * @memberof RankedUser
      */
-    organizations?: Array<Schema11>;
+    organizations: Array<Schema12>;
     /**
      *
-     * @type {UserBadge}
+     * @type {Schema8}
      * @memberof RankedUser
      */
-    badge?: UserBadge | null;
+    badge?: Schema8;
     /**
      *
      * @type {UserBackground}
      * @memberof RankedUser
      */
-    background?: UserBackground;
+    background: UserBackground;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
      * @memberof RankedUser
      */
-    profileImageUrl?: string | null;
+    profileImageUrl: string | null;
     /**
      * 사용자가 푼 문제 수입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    solvedCount?: number;
+    solvedCount: number;
     /**
      * 사용자가 난이도 기여를 한 횟수입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    voteCount?: number;
+    voteCount: number;
     /**
      * 사용자가 여태까지 획득한 경험치량입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    exp?: number;
+    exp: number;
     /**
      * Bronze V를 1, Bronze IV를 2, ..., Ruby I을 30, Master를 31로 표현하는 사용자 티어입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
@@ -611,67 +642,67 @@ export interface RankedUser {
      * @type {number}
      * @memberof RankedUser
      */
-    tier?: number;
+    tier: number;
     /**
      * 사용자의 레이팅입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    rating?: number;
+    rating: number;
     /**
      * 푼 문제의 난이도 합으로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    ratingByProblemsSum?: number;
+    ratingByProblemsSum: number;
     /**
      * 취득한 클래스에 따른 사용자의 레이팅입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    ratingByClass?: number;
+    ratingByClass: number;
     /**
      * 푼 문제 수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    ratingBySolvedCount?: number;
+    ratingBySolvedCount: number;
     /**
      * 문제 난이도에 기여한 횟수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    ratingByVoteCount?: number;
+    ratingByVoteCount: number;
     /**
      * 사용자가 취득한 Class입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    _class?: number;
+    _class: number;
     /**
      * 사용자가 취득한 Class의 수준입니다.
      * @type {string}
      * @memberof RankedUser
      */
-    classDecoration?: RankedUserClassDecorationEnum;
+    classDecoration: RankedUserClassDecorationEnum;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    rivalCount?: number;
+    rivalCount: number;
     /**
      * 사용자의 역라이벌 수입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    reverseRivalCount?: number;
+    reverseRivalCount: number;
     /**
      * 최대 연속 문제 풀이일 수입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    maxStreak?: number;
+    maxStreak: number;
     /**
      * 사용자의 순위입니다.
      * @type {number}
@@ -712,55 +743,55 @@ export interface Schema {
      * @type {string}
      * @memberof Schema
      */
-    handle?: string;
+    handle: string;
     /**
      * 사용자의 자기소개입니다.
      * @type {string}
      * @memberof Schema
      */
-    bio?: string;
+    bio: string;
     /**
      * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Schema11>}
+     * @type {Array<Schema12>}
      * @memberof Schema
      */
-    organizations?: Array<Schema11>;
+    organizations: Array<Schema12>;
     /**
      *
-     * @type {UserBadge}
+     * @type {Schema8}
      * @memberof Schema
      */
-    badge?: UserBadge | null;
+    badge?: Schema8;
     /**
      *
      * @type {UserBackground}
      * @memberof Schema
      */
-    background?: UserBackground;
+    background: UserBackground;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
      * @memberof Schema
      */
-    profileImageUrl?: string | null;
+    profileImageUrl: string | null;
     /**
      * 사용자가 푼 문제 수입니다.
      * @type {number}
      * @memberof Schema
      */
-    solvedCount?: number;
+    solvedCount: number;
     /**
      * 사용자가 난이도 기여를 한 횟수입니다.
      * @type {number}
      * @memberof Schema
      */
-    voteCount?: number;
+    voteCount: number;
     /**
      * 사용자가 여태까지 획득한 경험치량입니다.
      * @type {number}
      * @memberof Schema
      */
-    exp?: number;
+    exp: number;
     /**
      * Bronze V를 1, Bronze IV를 2, ..., Ruby I을 30, Master를 31로 표현하는 사용자 티어입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
@@ -808,67 +839,67 @@ export interface Schema {
      * @type {number}
      * @memberof Schema
      */
-    tier?: number;
+    tier: number;
     /**
      * 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema
      */
-    rating?: number;
+    rating: number;
     /**
      * 푼 문제의 난이도 합으로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema
      */
-    ratingByProblemsSum?: number;
+    ratingByProblemsSum: number;
     /**
      * 취득한 클래스에 따른 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema
      */
-    ratingByClass?: number;
+    ratingByClass: number;
     /**
      * 푼 문제 수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema
      */
-    ratingBySolvedCount?: number;
+    ratingBySolvedCount: number;
     /**
      * 문제 난이도에 기여한 횟수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema
      */
-    ratingByVoteCount?: number;
+    ratingByVoteCount: number;
     /**
      * 사용자가 취득한 Class입니다.
      * @type {number}
      * @memberof Schema
      */
-    _class?: number;
+    _class: number;
     /**
      * 사용자가 취득한 Class의 수준입니다.
      * @type {string}
      * @memberof Schema
      */
-    classDecoration?: SchemaClassDecorationEnum;
+    classDecoration: SchemaClassDecorationEnum;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
      * @memberof Schema
      */
-    rivalCount?: number;
+    rivalCount: number;
     /**
      * 사용자의 역라이벌 수입니다.
      * @type {number}
      * @memberof Schema
      */
-    reverseRivalCount?: number;
+    reverseRivalCount: number;
     /**
      * 최대 연속 문제 풀이일 수입니다.
      * @type {number}
      * @memberof Schema
      */
-    maxStreak?: number;
+    maxStreak: number;
 }
 /**
 * @export
@@ -892,23 +923,23 @@ export interface Schema1 {
      */
     screenTheme?: Schema1ScreenThemeEnum;
     /**
-     * 태그 이름을 나타낼 때 사용할 언어입니다.
+     *
+     * @type {Schema10}
+     * @memberof Schema1
+     */
+    tagDisplayLanguage?: Schema10;
+    /**
+     *
      * @type {Schema9}
      * @memberof Schema1
      */
-    tagDisplayLanguage?: Schema9;
+    iconSchemeSolved?: Schema9;
     /**
-     * 해결한 문제의 난이도 아이콘입니다.
-     * @type {Schema8}
+     *
+     * @type {Schema9}
      * @memberof Schema1
      */
-    iconSchemeSolved?: Schema8;
-    /**
-     * 해결하지 못한 문제의 난이도 아이콘입니다.
-     * @type {Schema8}
-     * @memberof Schema1
-     */
-    iconSchemeNotSolved?: Schema8;
+    iconSchemeNotSolved?: Schema9;
     /**
      * 문제 목록의 기본 정렬 순서입니다.
      * @type {string}
@@ -968,57 +999,66 @@ export declare enum Schema1ProblemSortByEnum {
     Random = "random"
 }
 /**
+ * 언어입니다.
+ * @export
+ * @enum {string}
+ */
+export declare enum Schema10 {
+    Ko = "ko",
+    En = "en"
+}
+/**
  *
  * @export
- * @interface Schema11
+ * @interface Schema12
  */
-export interface Schema11 {
+export interface Schema12 {
     /**
      * 조직의 ID입니다.
      * @type {number}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     organizationId?: number;
     /**
      * 조직의 이름입니다.
      * @type {string}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     name?: string;
     /**
      * 조직의 구분입니다.
      * @type {string}
-     * @memberof Schema11
+     * @memberof Schema12
      */
-    type?: Schema11TypeEnum;
+    type?: Schema12TypeEnum;
     /**
      * 조직의 레이팅입니다.
      * @type {number}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     rating?: number;
     /**
      * 조직에 포함된 사용자의 수입니다.
      * @type {number}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     userCount?: number;
     /**
      * 조직의 총 난이도 기여 수입니다.
      * @type {number}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     voteCount?: number;
     /**
      * 조직의 총 푼 문제 수입니다.
      * @type {number}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     solvedCount?: number;
     /**
      * 조직의 색깔입니다.
      * @type {string}
-     * @memberof Schema11
+     * @memberof Schema12
      */
     color?: string;
 }
@@ -1026,7 +1066,7 @@ export interface Schema11 {
 * @export
 * @enum {string}
 */
-export declare enum Schema11TypeEnum {
+export declare enum Schema12TypeEnum {
     Community = "community",
     University = "university",
     Company = "company",
@@ -1298,55 +1338,55 @@ export interface Schema6 {
      * @type {string}
      * @memberof Schema6
      */
-    handle?: string;
+    handle: string;
     /**
      * 사용자의 자기소개입니다.
      * @type {string}
      * @memberof Schema6
      */
-    bio?: string;
+    bio: string;
     /**
      * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Schema11>}
+     * @type {Array<Schema12>}
      * @memberof Schema6
      */
-    organizations?: Array<Schema11>;
+    organizations: Array<Schema12>;
     /**
      *
-     * @type {UserBadge}
+     * @type {Schema8}
      * @memberof Schema6
      */
-    badge?: UserBadge | null;
+    badge?: Schema8;
     /**
      *
      * @type {UserBackground}
      * @memberof Schema6
      */
-    background?: UserBackground;
+    background: UserBackground;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
      * @memberof Schema6
      */
-    profileImageUrl?: string | null;
+    profileImageUrl: string | null;
     /**
      * 사용자가 푼 문제 수입니다.
      * @type {number}
      * @memberof Schema6
      */
-    solvedCount?: number;
+    solvedCount: number;
     /**
      * 사용자가 난이도 기여를 한 횟수입니다.
      * @type {number}
      * @memberof Schema6
      */
-    voteCount?: number;
+    voteCount: number;
     /**
      * 사용자가 여태까지 획득한 경험치량입니다.
      * @type {number}
      * @memberof Schema6
      */
-    exp?: number;
+    exp: number;
     /**
      * Bronze V를 1, Bronze IV를 2, ..., Ruby I을 30, Master를 31로 표현하는 사용자 티어입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
@@ -1394,67 +1434,67 @@ export interface Schema6 {
      * @type {number}
      * @memberof Schema6
      */
-    tier?: number;
+    tier: number;
     /**
      * 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema6
      */
-    rating?: number;
+    rating: number;
     /**
      * 푼 문제의 난이도 합으로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema6
      */
-    ratingByProblemsSum?: number;
+    ratingByProblemsSum: number;
     /**
      * 취득한 클래스에 따른 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema6
      */
-    ratingByClass?: number;
+    ratingByClass: number;
     /**
      * 푼 문제 수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema6
      */
-    ratingBySolvedCount?: number;
+    ratingBySolvedCount: number;
     /**
      * 문제 난이도에 기여한 횟수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof Schema6
      */
-    ratingByVoteCount?: number;
+    ratingByVoteCount: number;
     /**
      * 사용자가 취득한 Class입니다.
      * @type {number}
      * @memberof Schema6
      */
-    _class?: number;
+    _class: number;
     /**
      * 사용자가 취득한 Class의 수준입니다.
      * @type {string}
      * @memberof Schema6
      */
-    classDecoration?: Schema6ClassDecorationEnum;
+    classDecoration: Schema6ClassDecorationEnum;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
      * @memberof Schema6
      */
-    rivalCount?: number;
+    rivalCount: number;
     /**
      * 사용자의 역라이벌 수입니다.
      * @type {number}
      * @memberof Schema6
      */
-    reverseRivalCount?: number;
+    reverseRivalCount: number;
     /**
      * 최대 연속 문제 풀이일 수입니다.
      * @type {number}
      * @memberof Schema6
      */
-    maxStreak?: number;
+    maxStreak: number;
     /**
      * 사용자의 순위입니다.
      * @type {number}
@@ -1509,23 +1549,45 @@ export interface Schema7 {
     contributionCount?: number;
 }
 /**
+ * 사용자가 사용할 수 있는 뱃지입니다.
+ * @export
+ * @interface Schema8
+ */
+export interface Schema8 {
+    /**
+     * 뱃지의 ID입니다.
+     * @type {string}
+     * @memberof Schema8
+     */
+    badgeId: string;
+    /**
+     * 뱃지 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Schema8
+     */
+    badgeImageUrl: string;
+    /**
+     * 뱃지의 이름입니다.
+     * @type {string}
+     * @memberof Schema8
+     */
+    displayName: string;
+    /**
+     * 뱃지의 설명입니다.
+     * @type {string}
+     * @memberof Schema8
+     */
+    displayDescription: string;
+}
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}
  */
-export declare enum Schema8 {
+export declare enum Schema9 {
     Default = "default",
     HideWarn = "hide-warn",
     Hide = "hide"
-}
-/**
- * 언어입니다.
- * @export
- * @enum {string}
- */
-export declare enum Schema9 {
-    Ko = "ko",
-    En = "en"
 }
 /**
  * 사용자의 solved.ac 설정 정보입니다.
@@ -1540,23 +1602,23 @@ export interface Settings {
      */
     screenTheme?: SettingsScreenThemeEnum;
     /**
-     * 태그 이름을 나타낼 때 사용할 언어입니다.
+     *
+     * @type {Schema10}
+     * @memberof Settings
+     */
+    tagDisplayLanguage?: Schema10;
+    /**
+     *
      * @type {Schema9}
      * @memberof Settings
      */
-    tagDisplayLanguage?: Schema9;
+    iconSchemeSolved?: Schema9;
     /**
-     * 해결한 문제의 난이도 아이콘입니다.
-     * @type {Schema8}
+     *
+     * @type {Schema9}
      * @memberof Settings
      */
-    iconSchemeSolved?: Schema8;
-    /**
-     * 해결하지 못한 문제의 난이도 아이콘입니다.
-     * @type {Schema8}
-     * @memberof Settings
-     */
-    iconSchemeNotSolved?: Schema8;
+    iconSchemeNotSolved?: Schema9;
     /**
      * 문제 목록의 기본 정렬 순서입니다.
      * @type {string}
@@ -1748,55 +1810,55 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    handle?: string;
+    handle: string;
     /**
      * 사용자의 자기소개입니다.
      * @type {string}
      * @memberof User
      */
-    bio?: string;
+    bio: string;
     /**
      * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Schema11>}
+     * @type {Array<Schema12>}
      * @memberof User
      */
-    organizations?: Array<Schema11>;
+    organizations: Array<Schema12>;
     /**
      *
-     * @type {UserBadge}
+     * @type {Schema8}
      * @memberof User
      */
-    badge?: UserBadge | null;
+    badge?: Schema8;
     /**
      *
      * @type {UserBackground}
      * @memberof User
      */
-    background?: UserBackground;
+    background: UserBackground;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
      * @memberof User
      */
-    profileImageUrl?: string | null;
+    profileImageUrl: string | null;
     /**
      * 사용자가 푼 문제 수입니다.
      * @type {number}
      * @memberof User
      */
-    solvedCount?: number;
+    solvedCount: number;
     /**
      * 사용자가 난이도 기여를 한 횟수입니다.
      * @type {number}
      * @memberof User
      */
-    voteCount?: number;
+    voteCount: number;
     /**
      * 사용자가 여태까지 획득한 경험치량입니다.
      * @type {number}
      * @memberof User
      */
-    exp?: number;
+    exp: number;
     /**
      * Bronze V를 1, Bronze IV를 2, ..., Ruby I을 30, Master를 31로 표현하는 사용자 티어입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
@@ -1844,67 +1906,67 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    tier?: number;
+    tier: number;
     /**
      * 사용자의 레이팅입니다.
      * @type {number}
      * @memberof User
      */
-    rating?: number;
+    rating: number;
     /**
      * 푼 문제의 난이도 합으로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof User
      */
-    ratingByProblemsSum?: number;
+    ratingByProblemsSum: number;
     /**
      * 취득한 클래스에 따른 사용자의 레이팅입니다.
      * @type {number}
      * @memberof User
      */
-    ratingByClass?: number;
+    ratingByClass: number;
     /**
      * 푼 문제 수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof User
      */
-    ratingBySolvedCount?: number;
+    ratingBySolvedCount: number;
     /**
      * 문제 난이도에 기여한 횟수로 계산한 사용자의 레이팅입니다.
      * @type {number}
      * @memberof User
      */
-    ratingByVoteCount?: number;
+    ratingByVoteCount: number;
     /**
      * 사용자가 취득한 Class입니다.
      * @type {number}
      * @memberof User
      */
-    _class?: number;
+    _class: number;
     /**
      * 사용자가 취득한 Class의 수준입니다.
      * @type {string}
      * @memberof User
      */
-    classDecoration?: UserClassDecorationEnum;
+    classDecoration: UserClassDecorationEnum;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
      * @memberof User
      */
-    rivalCount?: number;
+    rivalCount: number;
     /**
      * 사용자의 역라이벌 수입니다.
      * @type {number}
      * @memberof User
      */
-    reverseRivalCount?: number;
+    reverseRivalCount: number;
     /**
      * 최대 연속 문제 풀이일 수입니다.
      * @type {number}
      * @memberof User
      */
-    maxStreak?: number;
+    maxStreak: number;
 }
 /**
 * @export
@@ -1955,37 +2017,6 @@ export interface UserBackground {
      * 배경의 설명입니다.
      * @type {string}
      * @memberof UserBackground
-     */
-    displayDescription?: string;
-}
-/**
- * 사용자의 배지입니다.
- * @export
- * @interface UserBadge
- */
-export interface UserBadge {
-    /**
-     * 배지의 ID입니다.
-     * @type {string}
-     * @memberof UserBadge
-     */
-    badgeId?: string;
-    /**
-     * 배지 사진으로 가는 하이퍼링크입니다.
-     * @type {string}
-     * @memberof UserBadge
-     */
-    badgeImageUrl?: string;
-    /**
-     * 배지의 이름입니다.
-     * @type {string}
-     * @memberof UserBadge
-     */
-    displayName?: string;
-    /**
-     * 배지의 설명입니다.
-     * @type {string}
-     * @memberof UserBadge
      */
     displayDescription?: string;
 }
