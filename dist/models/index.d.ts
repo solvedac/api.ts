@@ -30,6 +30,44 @@ export interface Badge {
     displayDescription: string;
 }
 /**
+ * 사용자 정보입니다.
+ * @export
+ * @interface FullUser
+ */
+export interface FullUser {
+    /**
+     * 라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUser
+     */
+    isRival?: boolean;
+    /**
+     * 역라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUser
+     */
+    isReverseRival?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface FullUserAllOf
+ */
+export interface FullUserAllOf {
+    /**
+     * 라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUserAllOf
+     */
+    isRival?: boolean;
+    /**
+     * 역라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUserAllOf
+     */
+    isReverseRival?: boolean;
+}
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}

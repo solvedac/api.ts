@@ -11,6 +11,9 @@
  */
 import * as runtime from '../runtime.js';
 import { InlineResponse2006 } from '../models/index.js';
+export interface GetUserRequest {
+    handle: string;
+}
 export interface GetUserProblemStatsRequest {
     handle: string;
 }
@@ -18,6 +21,16 @@ export interface GetUserProblemStatsRequest {
  *
  */
 export declare class UserApi extends runtime.BaseAPI {
+    /**
+     * 사용자의 정보를 가져옵니다. 만약 로그인한 경우, 라이벌 여부도 가져옵니다.
+     * 사용자 정보 가져오기
+     */
+    getUserRaw(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<object>>>;
+    /**
+     * 사용자의 정보를 가져옵니다. 만약 로그인한 경우, 라이벌 여부도 가져옵니다.
+     * 사용자 정보 가져오기
+     */
+    getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<Array<object>>;
     /**
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
