@@ -296,24 +296,4 @@ export class DefaultApi extends runtime.BaseAPI {
     async userProblemTagStatsGet(initOverrides) {
         await this.userProblemTagStatsGetRaw(initOverrides);
     }
-    /**
-     * TODO
-     */
-    async userShowGetRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/user/show`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.VoidApiResponse(response);
-    }
-    /**
-     * TODO
-     */
-    async userShowGet(initOverrides) {
-        await this.userShowGetRaw(initOverrides);
-    }
 }

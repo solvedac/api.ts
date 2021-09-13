@@ -1,4 +1,14 @@
 /**
+* @export
+* @enum {string}
+*/
+export var FullUserClassDecorationEnum;
+(function (FullUserClassDecorationEnum) {
+    FullUserClassDecorationEnum["None"] = "none";
+    FullUserClassDecorationEnum["Silver"] = "silver";
+    FullUserClassDecorationEnum["Gold"] = "gold";
+})(FullUserClassDecorationEnum || (FullUserClassDecorationEnum = {}));
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}

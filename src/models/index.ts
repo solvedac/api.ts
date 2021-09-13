@@ -32,6 +32,222 @@ export interface Badge {
     displayDescription: string;
 }
 /**
+ * 사용자 정보입니다.
+ * @export
+ * @interface FullUser
+ */
+export interface FullUser {
+    /**
+     * 사용자명입니다.
+     * @type {string}
+     * @memberof FullUser
+     */
+    handle: string;
+    /**
+     * 사용자의 자기소개입니다.
+     * @type {string}
+     * @memberof FullUser
+     */
+    bio: string;
+    /**
+     * 사용자가 속한 조직 목록입니다.
+     * @type {Array<Organization>}
+     * @memberof FullUser
+     */
+    organizations: Array<Organization>;
+    /**
+     * 
+     * @type {Badge}
+     * @memberof FullUser
+     */
+    badge?: Badge;
+    /**
+     * 
+     * @type {UserBackground}
+     * @memberof FullUser
+     */
+    background: UserBackground;
+    /**
+     * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof FullUser
+     */
+    profileImageUrl: string | null;
+    /**
+     * 사용자가 푼 문제 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    solvedCount: number;
+    /**
+     * 사용자가 난이도 기여를 한 횟수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    voteCount: number;
+    /**
+     * 사용자가 여태까지 획득한 경험치량입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    exp: number;
+    /**
+     * Bronze V를 1, Bronze IV를 2, ..., Ruby I을 30, Master를 31로 표현하는 사용자 티어입니다.
+     * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
+     * 
+     * <details>
+     *   <summary>
+     *     표1. 수치 - 이름 표
+     *   </summary>
+     * 
+     *   | 수치 | 이름         |
+     *   | ---: | ------------ |
+     *   |    1 | Bronze V     |
+     *   |    2 | Bronze IV    |
+     *   |    3 | Bronze III   |
+     *   |    4 | Bronze II    |
+     *   |    5 | Bronze I     |
+     *   |    6 | Silver V     |
+     *   |    7 | Silver IV    |
+     *   |    8 | Silver III   |
+     *   |    9 | Silver II    |
+     *   |   10 | Silver I     |
+     *   |   11 | Gold V       |
+     *   |   12 | Gold IV      |
+     *   |   13 | Gold III     |
+     *   |   14 | Gold II      |
+     *   |   15 | Gold I       |
+     *   |   16 | Platinum V   |
+     *   |   17 | Platinum IV  |
+     *   |   18 | Platinum III |
+     *   |   19 | Platinum II  |
+     *   |   20 | Platinum I   |
+     *   |   21 | Diamond V    |
+     *   |   22 | Diamond IV   |
+     *   |   23 | Diamond III  |
+     *   |   24 | Diamond II   |
+     *   |   25 | Diamond I    |
+     *   |   26 | Ruby V       |
+     *   |   27 | Ruby IV      |
+     *   |   28 | Ruby III     |
+     *   |   29 | Ruby II      |
+     *   |   30 | Ruby I       |
+     *   |   31 | Master       |
+     * 
+     * </details>
+     * @type {number}
+     * @memberof FullUser
+     */
+    tier: number;
+    /**
+     * 사용자의 레이팅입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    rating: number;
+    /**
+     * 푼 문제의 난이도 합으로 계산한 사용자의 레이팅입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    ratingByProblemsSum: number;
+    /**
+     * 취득한 클래스에 따른 사용자의 레이팅입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    ratingByClass: number;
+    /**
+     * 푼 문제 수로 계산한 사용자의 레이팅입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    ratingBySolvedCount: number;
+    /**
+     * 문제 난이도에 기여한 횟수로 계산한 사용자의 레이팅입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    ratingByVoteCount: number;
+    /**
+     * 사용자가 취득한 Class입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    _class: number;
+    /**
+     * 사용자가 취득한 Class의 수준입니다.
+     * @type {string}
+     * @memberof FullUser
+     */
+    classDecoration: FullUserClassDecorationEnum;
+    /**
+     * 사용자의 라이벌 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    rivalCount: number;
+    /**
+     * 사용자의 역라이벌 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    reverseRivalCount: number;
+    /**
+     * 최대 연속 문제 풀이일 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    maxStreak: number;
+    /**
+     * 사용자의 순위입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    rank?: number;
+    /**
+     * 라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUser
+     */
+    isRival?: boolean;
+    /**
+     * 역라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUser
+     */
+    isReverseRival?: boolean;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum FullUserClassDecorationEnum {
+    None = 'none',
+    Silver = 'silver',
+    Gold = 'gold'
+}
+/**
+ * 
+ * @export
+ * @interface FullUserAllOf
+ */
+export interface FullUserAllOf {
+    /**
+     * 라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUserAllOf
+     */
+    isRival?: boolean;
+    /**
+     * 역라이벌 여부입니다.
+     * @type {boolean}
+     * @memberof FullUserAllOf
+     */
+    isReverseRival?: boolean;
+}
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}
