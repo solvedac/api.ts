@@ -15,8 +15,13 @@
 
 import * as runtime from '../runtime.js';
 import {
+    FullUser,
     InlineResponse2006,
 } from '../models/index.js';
+
+export interface GetUserRequest {
+    handle: string;
+}
 
 export interface GetUserProblemStatsRequest {
     handle: string;
@@ -26,6 +31,42 @@ export interface GetUserProblemStatsRequest {
  * 
  */
 export class UserApi extends runtime.BaseAPI {
+
+    /**
+     * 사용자의 정보를 가져옵니다. 만약 로그인한 경우, 라이벌 여부도 가져옵니다.
+     * 사용자 정보 가져오기
+     */
+    async getUserRaw(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FullUser>> {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling getUser.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.handle !== undefined) {
+            queryParameters['handle'] = requestParameters.handle;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/show`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 사용자의 정보를 가져옵니다. 만약 로그인한 경우, 라이벌 여부도 가져옵니다.
+     * 사용자 정보 가져오기
+     */
+    async getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<FullUser> {
+        const response = await this.getUserRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.

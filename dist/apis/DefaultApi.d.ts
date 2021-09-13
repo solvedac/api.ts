@@ -126,12 +126,4 @@ export declare class DefaultApi extends runtime.BaseAPI {
      * TODO
      */
     userProblemTagStatsGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    userShowGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    userShowGet(initOverrides?: RequestInit): Promise<void>;
 }
