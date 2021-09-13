@@ -1,13 +1,14 @@
 /**
-* @export
-* @enum {string}
-*/
-export var FullUserClassDecorationEnum;
-(function (FullUserClassDecorationEnum) {
-    FullUserClassDecorationEnum["None"] = "none";
-    FullUserClassDecorationEnum["Silver"] = "silver";
-    FullUserClassDecorationEnum["Gold"] = "gold";
-})(FullUserClassDecorationEnum || (FullUserClassDecorationEnum = {}));
+ * 클래스 치장입니다.
+ * @export
+ * @enum {string}
+ */
+export var ClassDecoration;
+(function (ClassDecoration) {
+    ClassDecoration["None"] = "none";
+    ClassDecoration["Silver"] = "silver";
+    ClassDecoration["Gold"] = "gold";
+})(ClassDecoration || (ClassDecoration = {}));
 /**
  * 난이도 아이콘 표시 정책입니다.
  * @export
@@ -44,16 +45,6 @@ export var OrganizationTypeEnum;
 * @export
 * @enum {string}
 */
-export var RankedUserClassDecorationEnum;
-(function (RankedUserClassDecorationEnum) {
-    RankedUserClassDecorationEnum["None"] = "none";
-    RankedUserClassDecorationEnum["Silver"] = "silver";
-    RankedUserClassDecorationEnum["Gold"] = "gold";
-})(RankedUserClassDecorationEnum || (RankedUserClassDecorationEnum = {}));
-/**
-* @export
-* @enum {string}
-*/
 export var SettingsScreenThemeEnum;
 (function (SettingsScreenThemeEnum) {
     SettingsScreenThemeEnum["Default"] = "default";
@@ -73,13 +64,3 @@ export var SettingsProblemSortByEnum;
     SettingsProblemSortByEnum["AverageTry"] = "average_try";
     SettingsProblemSortByEnum["Random"] = "random";
 })(SettingsProblemSortByEnum || (SettingsProblemSortByEnum = {}));
-/**
-* @export
-* @enum {string}
-*/
-export var UserClassDecorationEnum;
-(function (UserClassDecorationEnum) {
-    UserClassDecorationEnum["None"] = "none";
-    UserClassDecorationEnum["Silver"] = "silver";
-    UserClassDecorationEnum["Gold"] = "gold";
-})(UserClassDecorationEnum || (UserClassDecorationEnum = {}));
