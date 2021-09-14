@@ -235,6 +235,12 @@ export interface FullUser {
  */
 export interface FullUserAllOf {
     /**
+     * 사용자의 순위입니다.
+     * @type {number}
+     * @memberof FullUserAllOf
+     */
+    rank?: number;
+    /**
      * 라이벌 여부입니다.
      * @type {boolean}
      * @memberof FullUserAllOf

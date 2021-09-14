@@ -30,6 +30,16 @@ export interface Badge {
     displayDescription: string;
 }
 /**
+ * 클래스 치장입니다.
+ * @export
+ * @enum {string}
+ */
+export declare enum ClassDecoration {
+    None = "none",
+    Silver = "silver",
+    Gold = "gold"
+}
+/**
  * 사용자 정보입니다.
  * @export
  * @interface FullUser
@@ -174,11 +184,11 @@ export interface FullUser {
      */
     _class: number;
     /**
-     * 사용자가 취득한 Class의 수준입니다.
-     * @type {string}
+     *
+     * @type {ClassDecoration}
      * @memberof FullUser
      */
-    classDecoration: FullUserClassDecorationEnum;
+    classDecoration: ClassDecoration;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
@@ -215,15 +225,6 @@ export interface FullUser {
      * @memberof FullUser
      */
     isReverseRival?: boolean;
-}
-/**
-* @export
-* @enum {string}
-*/
-export declare enum FullUserClassDecorationEnum {
-    None = "none",
-    Silver = "silver",
-    Gold = "gold"
 }
 /**
  *
@@ -960,11 +961,11 @@ export interface RankedUser {
      */
     _class: number;
     /**
-     * 사용자가 취득한 Class의 수준입니다.
-     * @type {string}
+     *
+     * @type {ClassDecoration}
      * @memberof RankedUser
      */
-    classDecoration: RankedUserClassDecorationEnum;
+    classDecoration: ClassDecoration;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
@@ -989,15 +990,6 @@ export interface RankedUser {
      * @memberof RankedUser
      */
     rank?: number;
-}
-/**
-* @export
-* @enum {string}
-*/
-export declare enum RankedUserClassDecorationEnum {
-    None = "none",
-    Silver = "silver",
-    Gold = "gold"
 }
 /**
  *
@@ -1404,11 +1396,11 @@ export interface User {
      */
     _class: number;
     /**
-     * 사용자가 취득한 Class의 수준입니다.
-     * @type {string}
+     *
+     * @type {ClassDecoration}
      * @memberof User
      */
-    classDecoration: UserClassDecorationEnum;
+    classDecoration: ClassDecoration;
     /**
      * 사용자의 라이벌 수입니다.
      * @type {number}
@@ -1427,15 +1419,6 @@ export interface User {
      * @memberof User
      */
     maxStreak: number;
-}
-/**
-* @export
-* @enum {string}
-*/
-export declare enum UserClassDecorationEnum {
-    None = "none",
-    Silver = "silver",
-    Gold = "gold"
 }
 /**
  * 사용자의 배경 사진입니다.
