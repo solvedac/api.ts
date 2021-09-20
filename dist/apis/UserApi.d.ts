@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { FullUser, InlineResponse2006 } from '../models/index.js';
+import { FullUser, InlineResponse20014 } from '../models/index.js';
 export interface GetUserRequest {
     handle: string;
 }
@@ -35,10 +35,10 @@ export declare class UserApi extends runtime.BaseAPI {
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
      */
-    getUserProblemStatsRaw(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2006>>>;
+    getUserProblemStatsRaw(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse20014>>>;
     /**
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
      */
-    getUserProblemStats(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<Array<InlineResponse2006>>;
+    getUserProblemStats(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<Array<InlineResponse20014>>;
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { InlineResponse2001, TaggedProblem } from '../models/index.js';
+import { InlineResponse2001, InlineResponse2002, TaggedProblem } from '../models/index.js';
 export interface GetProblemByIdRequest {
     problemId: number;
 }
@@ -18,6 +18,16 @@ export interface GetProblemByIdRequest {
  *
  */
 export declare class ProblemApi extends runtime.BaseAPI {
+    /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    getClassProblemCountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2001>>>;
+    /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    getClassProblemCount(initOverrides?: RequestInit): Promise<Array<InlineResponse2001>>;
     /**
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
@@ -32,10 +42,10 @@ export declare class ProblemApi extends runtime.BaseAPI {
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
      */
-    getProblemLevelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2001>>>;
+    getProblemLevelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2002>>>;
     /**
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
      */
-    getProblemLevel(initOverrides?: RequestInit): Promise<Array<InlineResponse2001>>;
+    getProblemLevel(initOverrides?: RequestInit): Promise<Array<InlineResponse2002>>;
 }

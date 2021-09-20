@@ -16,11 +16,16 @@
 import * as runtime from '../runtime.js';
 import {
     InlineObject,
+    InlineObject1,
     InlineResponse200,
 } from '../models/index.js';
 
-export interface UpdateAccountSettingsRequest {
+export interface RedeemCodeRequest {
     inlineObject: InlineObject;
+}
+
+export interface UpdateAccountSettingsRequest {
+    inlineObject1: InlineObject1;
 }
 
 /**
@@ -29,12 +34,46 @@ export interface UpdateAccountSettingsRequest {
 export class AccountApi extends runtime.BaseAPI {
 
     /**
+     * 리딤 코드와 배지, 배경 등을 교환합니다.
+     * 코드 교환하기
+     */
+    async redeemCodeRaw(requestParameters: RedeemCodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.inlineObject === null || requestParameters.inlineObject === undefined) {
+            throw new runtime.RequiredError('inlineObject','Required parameter requestParameters.inlineObject was null or undefined when calling redeemCode.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/account/redeem`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.inlineObject,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * 리딤 코드와 배지, 배경 등을 교환합니다.
+     * 코드 교환하기
+     */
+    async redeemCode(requestParameters: RedeemCodeRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.redeemCodeRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * 계정의 설정을 변경합니다.
      * 계정 설정 변경하기
      */
     async updateAccountSettingsRaw(requestParameters: UpdateAccountSettingsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.inlineObject === null || requestParameters.inlineObject === undefined) {
-            throw new runtime.RequiredError('inlineObject','Required parameter requestParameters.inlineObject was null or undefined when calling updateAccountSettings.');
+        if (requestParameters.inlineObject1 === null || requestParameters.inlineObject1 === undefined) {
+            throw new runtime.RequiredError('inlineObject1','Required parameter requestParameters.inlineObject1 was null or undefined when calling updateAccountSettings.');
         }
 
         const queryParameters: any = {};
@@ -48,7 +87,7 @@ export class AccountApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.inlineObject,
+            body: requestParameters.inlineObject1,
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);

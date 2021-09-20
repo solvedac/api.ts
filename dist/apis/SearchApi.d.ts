@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { InlineResponse2002, InlineResponse2003, InlineResponse2004, InlineResponse2005 } from '../models/index.js';
+import { InlineResponse20010, InlineResponse20011, InlineResponse20012, InlineResponse20013 } from '../models/index.js';
 export interface GetSearchAutoCompletionRequest {
     query: string;
 }
@@ -36,42 +36,42 @@ export declare class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 검색해보고, 자동 완성에 적합하도록 가공한 정보를 돌려줍니다.
      * 검색 자동완성 구하기
      */
-    getSearchAutoCompletionRaw(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2003>>;
+    getSearchAutoCompletionRaw(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20011>>;
     /**
      * 주어진 쿼리에 따라 검색해보고, 자동 완성에 적합하도록 가공한 정보를 돌려줍니다.
      * 검색 자동완성 구하기
      */
-    getSearchAutoCompletion(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<InlineResponse2003>;
+    getSearchAutoCompletion(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<InlineResponse20011>;
     /**
      * 주어진 쿼리에 따라 문제를 검색합니다.
      * 문제 검색하기
      */
-    searchProblemRaw(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2002>>;
+    searchProblemRaw(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20010>>;
     /**
      * 주어진 쿼리에 따라 문제를 검색합니다.
      * 문제 검색하기
      */
-    searchProblem(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<InlineResponse2002>;
+    searchProblem(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<InlineResponse20010>;
     /**
      * 주어진 쿼리에 따라 문제 태그를 검색합니다.
      * 문제 태그 검색하기
      */
-    searchProblemTagRaw(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2004>>;
+    searchProblemTagRaw(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20012>>;
     /**
      * 주어진 쿼리에 따라 문제 태그를 검색합니다.
      * 문제 태그 검색하기
      */
-    searchProblemTag(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<InlineResponse2004>;
+    searchProblemTag(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<InlineResponse20012>;
     /**
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2005>>;
+    searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20013>>;
     /**
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<InlineResponse2005>;
+    searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<InlineResponse20013>;
 }
 /**
     * @export

@@ -17,6 +17,29 @@ import * as runtime from '../runtime.js';
  */
 export class ProblemApi extends runtime.BaseAPI {
     /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    async getClassProblemCountRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/problem/class`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    async getClassProblemCount(initOverrides) {
+        const response = await this.getClassProblemCountRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * 해당하는 ID의 문제를 가져옵니다.
      * ID로 문제 가져오기
      */
