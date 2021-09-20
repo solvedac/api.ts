@@ -17,83 +17,11 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      * TODO
      */
-    accountRedeemPostRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    accountRedeemPost(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
     postShowGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
     /**
      * TODO
      */
     postShowGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    problemClassGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    problemClassGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingClassGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingClassGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingContributionGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingContributionGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingOrganizationGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingOrganizationGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingReverseRivalGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingReverseRivalGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingRivalGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingRivalGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingStreakGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingStreakGet(initOverrides?: RequestInit): Promise<void>;
-    /**
-     * TODO
-     */
-    rankingTierGetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
-    /**
-     * TODO
-     */
-    rankingTierGet(initOverrides?: RequestInit): Promise<void>;
     /**
      * TODO
      */

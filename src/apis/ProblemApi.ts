@@ -16,6 +16,7 @@
 import * as runtime from '../runtime.js';
 import {
     InlineResponse2001,
+    InlineResponse2002,
     TaggedProblem,
 } from '../models/index.js';
 
@@ -27,6 +28,34 @@ export interface GetProblemByIdRequest {
  * 
  */
 export class ProblemApi extends runtime.BaseAPI {
+
+    /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    async getClassProblemCountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2001>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/problem/class`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 문제 개수를 문제 CLASS별로 가져옵니다.
+     * CLASS별 문제 수 가져오기
+     */
+    async getClassProblemCount(initOverrides?: RequestInit): Promise<Array<InlineResponse2001>> {
+        const response = await this.getClassProblemCountRaw(initOverrides);
+        return await response.value();
+    }
 
     /**
      * 해당하는 ID의 문제를 가져옵니다.
@@ -68,7 +97,7 @@ export class ProblemApi extends runtime.BaseAPI {
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
      */
-    async getProblemLevelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2001>>> {
+    async getProblemLevelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2002>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -87,7 +116,7 @@ export class ProblemApi extends runtime.BaseAPI {
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
      */
-    async getProblemLevel(initOverrides?: RequestInit): Promise<Array<InlineResponse2001>> {
+    async getProblemLevel(initOverrides?: RequestInit): Promise<Array<InlineResponse2002>> {
         const response = await this.getProblemLevelRaw(initOverrides);
         return await response.value();
     }

@@ -15,10 +15,10 @@
 
 import * as runtime from '../runtime.js';
 import {
-    InlineResponse2002,
-    InlineResponse2003,
-    InlineResponse2004,
-    InlineResponse2005,
+    InlineResponse20010,
+    InlineResponse20011,
+    InlineResponse20012,
+    InlineResponse20013,
 } from '../models/index.js';
 
 export interface GetSearchAutoCompletionRequest {
@@ -51,7 +51,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 검색해보고, 자동 완성에 적합하도록 가공한 정보를 돌려줍니다.
      * 검색 자동완성 구하기
      */
-    async getSearchAutoCompletionRaw(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2003>> {
+    async getSearchAutoCompletionRaw(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20011>> {
         if (requestParameters.query === null || requestParameters.query === undefined) {
             throw new runtime.RequiredError('query','Required parameter requestParameters.query was null or undefined when calling getSearchAutoCompletion.');
         }
@@ -78,7 +78,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 검색해보고, 자동 완성에 적합하도록 가공한 정보를 돌려줍니다.
      * 검색 자동완성 구하기
      */
-    async getSearchAutoCompletion(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<InlineResponse2003> {
+    async getSearchAutoCompletion(requestParameters: GetSearchAutoCompletionRequest, initOverrides?: RequestInit): Promise<InlineResponse20011> {
         const response = await this.getSearchAutoCompletionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -87,7 +87,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 문제를 검색합니다.
      * 문제 검색하기
      */
-    async searchProblemRaw(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2002>> {
+    async searchProblemRaw(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20010>> {
         if (requestParameters.query === null || requestParameters.query === undefined) {
             throw new runtime.RequiredError('query','Required parameter requestParameters.query was null or undefined when calling searchProblem.');
         }
@@ -126,7 +126,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 문제를 검색합니다.
      * 문제 검색하기
      */
-    async searchProblem(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<InlineResponse2002> {
+    async searchProblem(requestParameters: SearchProblemRequest, initOverrides?: RequestInit): Promise<InlineResponse20010> {
         const response = await this.searchProblemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -135,7 +135,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 문제 태그를 검색합니다.
      * 문제 태그 검색하기
      */
-    async searchProblemTagRaw(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2004>> {
+    async searchProblemTagRaw(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20012>> {
         if (requestParameters.query === null || requestParameters.query === undefined) {
             throw new runtime.RequiredError('query','Required parameter requestParameters.query was null or undefined when calling searchProblemTag.');
         }
@@ -166,7 +166,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 문제 태그를 검색합니다.
      * 문제 태그 검색하기
      */
-    async searchProblemTag(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<InlineResponse2004> {
+    async searchProblemTag(requestParameters: SearchProblemTagRequest, initOverrides?: RequestInit): Promise<InlineResponse20012> {
         const response = await this.searchProblemTagRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -175,7 +175,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    async searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2005>> {
+    async searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse20013>> {
         if (requestParameters.query === null || requestParameters.query === undefined) {
             throw new runtime.RequiredError('query','Required parameter requestParameters.query was null or undefined when calling searchUser.');
         }
@@ -206,7 +206,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    async searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<InlineResponse2005> {
+    async searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit): Promise<InlineResponse20013> {
         const response = await this.searchUserRaw(requestParameters, initOverrides);
         return await response.value();
     }

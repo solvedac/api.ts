@@ -16,7 +16,7 @@
 import * as runtime from '../runtime.js';
 import {
     FullUser,
-    InlineResponse2006,
+    InlineResponse20014,
 } from '../models/index.js';
 
 export interface GetUserRequest {
@@ -72,7 +72,7 @@ export class UserApi extends runtime.BaseAPI {
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
      */
-    async getUserProblemStatsRaw(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse2006>>> {
+    async getUserProblemStatsRaw(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InlineResponse20014>>> {
         if (requestParameters.handle === null || requestParameters.handle === undefined) {
             throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling getUserProblemStats.');
         }
@@ -99,7 +99,7 @@ export class UserApi extends runtime.BaseAPI {
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
      */
-    async getUserProblemStats(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<Array<InlineResponse2006>> {
+    async getUserProblemStats(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit): Promise<Array<InlineResponse20014>> {
         const response = await this.getUserProblemStatsRaw(requestParameters, initOverrides);
         return await response.value();
     }

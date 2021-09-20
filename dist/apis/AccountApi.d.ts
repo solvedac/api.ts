@@ -10,14 +10,27 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { InlineObject, InlineResponse200 } from '../models/index.js';
-export interface UpdateAccountSettingsRequest {
+import { InlineObject, InlineObject1, InlineResponse200 } from '../models/index.js';
+export interface RedeemCodeRequest {
     inlineObject: InlineObject;
+}
+export interface UpdateAccountSettingsRequest {
+    inlineObject1: InlineObject1;
 }
 /**
  *
  */
 export declare class AccountApi extends runtime.BaseAPI {
+    /**
+     * 리딤 코드와 배지, 배경 등을 교환합니다.
+     * 코드 교환하기
+     */
+    redeemCodeRaw(requestParameters: RedeemCodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>>;
+    /**
+     * 리딤 코드와 배지, 배경 등을 교환합니다.
+     * 코드 교환하기
+     */
+    redeemCode(requestParameters: RedeemCodeRequest, initOverrides?: RequestInit): Promise<void>;
     /**
      * 계정의 설정을 변경합니다.
      * 계정 설정 변경하기
