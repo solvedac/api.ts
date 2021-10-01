@@ -70,7 +70,7 @@ export class ProblemApi extends runtime.BaseAPI {
     }
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     async getProblemByIdArrayRaw(requestParameters, initOverrides) {
         if (requestParameters.problemIds === null || requestParameters.problemIds === undefined) {
@@ -91,7 +91,7 @@ export class ProblemApi extends runtime.BaseAPI {
     }
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     async getProblemByIdArray(requestParameters, initOverrides) {
         const response = await this.getProblemByIdArrayRaw(requestParameters, initOverrides);
