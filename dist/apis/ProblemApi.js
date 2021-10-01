@@ -69,6 +69,35 @@ export class ProblemApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    async getProblemByIdArrayRaw(requestParameters, initOverrides) {
+        if (requestParameters.problemIds === null || requestParameters.problemIds === undefined) {
+            throw new runtime.RequiredError('problemIds', 'Required parameter requestParameters.problemIds was null or undefined when calling getProblemByIdArray.');
+        }
+        const queryParameters = {};
+        if (requestParameters.problemIds !== undefined) {
+            queryParameters['problemIds'] = requestParameters.problemIds;
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/problem/lookup`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    async getProblemByIdArray(requestParameters, initOverrides) {
+        const response = await this.getProblemByIdArrayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
      */
