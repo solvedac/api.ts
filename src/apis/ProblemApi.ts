@@ -24,6 +24,10 @@ export interface GetProblemByIdRequest {
     problemId: number;
 }
 
+export interface GetProblemByIdArrayRequest {
+    problemIds: number;
+}
+
 /**
  * 
  */
@@ -90,6 +94,42 @@ export class ProblemApi extends runtime.BaseAPI {
      */
     async getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<TaggedProblem> {
         const response = await this.getProblemByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    async getProblemByIdArrayRaw(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<TaggedProblem>>> {
+        if (requestParameters.problemIds === null || requestParameters.problemIds === undefined) {
+            throw new runtime.RequiredError('problemIds','Required parameter requestParameters.problemIds was null or undefined when calling getProblemByIdArray.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.problemIds !== undefined) {
+            queryParameters['problemIds'] = requestParameters.problemIds;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/problem/lookup`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    async getProblemByIdArray(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<Array<TaggedProblem>> {
+        const response = await this.getProblemByIdArrayRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

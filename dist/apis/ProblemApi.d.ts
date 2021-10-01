@@ -14,6 +14,9 @@ import { InlineResponse2001, InlineResponse2002, TaggedProblem } from '../models
 export interface GetProblemByIdRequest {
     problemId: number;
 }
+export interface GetProblemByIdArrayRequest {
+    problemIds: number;
+}
 /**
  *
  */
@@ -38,6 +41,16 @@ export declare class ProblemApi extends runtime.BaseAPI {
      * ID로 문제 가져오기
      */
     getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<TaggedProblem>;
+    /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    getProblemByIdArrayRaw(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<TaggedProblem>>>;
+    /**
+     * 해당하는 ID의 문제 목록을 가져옵니다.
+     * ID로 문제 목록 가져오기
+     */
+    getProblemByIdArray(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<Array<TaggedProblem>>;
     /**
      * 문제 개수를 문제 수준별로 가져옵니다.
      * 수준별 문제 수 가져오기
