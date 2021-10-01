@@ -25,7 +25,7 @@ export interface GetProblemByIdRequest {
 }
 
 export interface GetProblemByIdArrayRequest {
-    problemIds: number;
+    problemIds: string;
 }
 
 /**
@@ -99,7 +99,7 @@ export class ProblemApi extends runtime.BaseAPI {
 
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     async getProblemByIdArrayRaw(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<TaggedProblem>>> {
         if (requestParameters.problemIds === null || requestParameters.problemIds === undefined) {
@@ -126,7 +126,7 @@ export class ProblemApi extends runtime.BaseAPI {
 
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     async getProblemByIdArray(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<Array<TaggedProblem>> {
         const response = await this.getProblemByIdArrayRaw(requestParameters, initOverrides);

@@ -15,7 +15,7 @@ export interface GetProblemByIdRequest {
     problemId: number;
 }
 export interface GetProblemByIdArrayRequest {
-    problemIds: number;
+    problemIds: string;
 }
 /**
  *
@@ -43,12 +43,12 @@ export declare class ProblemApi extends runtime.BaseAPI {
     getProblemById(requestParameters: GetProblemByIdRequest, initOverrides?: RequestInit): Promise<TaggedProblem>;
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     getProblemByIdArrayRaw(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<TaggedProblem>>>;
     /**
      * 해당하는 ID의 문제 목록을 가져옵니다.
-     * ID로 문제 목록 가져오기
+     * ID 목록으로 문제 목록 가져오기
      */
     getProblemByIdArray(requestParameters: GetProblemByIdArrayRequest, initOverrides?: RequestInit): Promise<Array<TaggedProblem>>;
     /**
