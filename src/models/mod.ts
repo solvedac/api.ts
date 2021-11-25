@@ -307,6 +307,12 @@ export interface InlineResponse200 {
      * @memberof InlineResponse200
      */
     user?: User & object;
+    /**
+     * 해당 계정의 사용자가 푼 문제 정보입니다.
+     * @type {Array<InlineResponse200Solved>}
+     * @memberof InlineResponse200
+     */
+    solved?: Array<InlineResponse200Solved>;
 }
 /**
  * 
@@ -736,6 +742,26 @@ export interface InlineResponse2009 {
      * @memberof InlineResponse2009
      */
     items?: Array<Organization>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse200Solved
+ */
+export interface InlineResponse200Solved {
+    /**
+     * 문제 ID입니다.
+     * @type {number}
+     * @memberof InlineResponse200Solved
+     */
+    id?: number;
+    /**
+     * 현재 문제 풀이 상태입니다. 알려진 값은 다음이 있습니다.
+     * `"solved"`, `"tried"`
+     * @type {string}
+     * @memberof InlineResponse200Solved
+     */
+    status?: string;
 }
 /**
  * 언어입니다.
