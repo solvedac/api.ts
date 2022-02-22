@@ -1,4 +1,5 @@
 apis/AccountApi.ts
+apis/CoinsApi.ts
 apis/DefaultApi.ts
 apis/OtherApi.ts
 apis/ProblemApi.ts

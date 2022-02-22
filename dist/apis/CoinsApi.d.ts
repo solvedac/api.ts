@@ -1,5 +1,3 @@
-/* tslint:disable */
-/* eslint-disable */
 /**
  * @solvedac/unofficial-documentation
  * 이 프로젝트는 [solved.ac](https://solved.ac/) API를 문서화하는 커뮤니티 프로젝트입니다. 이 저장소는 원작자의 요청에 따라 언제든 지워질 수 있으며, 현재 API와 일치하지 않을 수도 있는 점 양해 부탁드립니다.  <sup>   solved.ac 서비스는 shiftpsh가 기획·개발·디자인·운영하는 프로젝트로,   이 저장소와는 solved.ac의 API를 문서화해둔 것 이외에는 아무런 관련이 없습니다. </sup>  **주의**: account 하위 루트를 탐색할 경우, 현재 로그인된 solvedacToken이 노출·오용될 수 있으니 주의하십시오.  [GitHub에서 보기](https://github.com/solvedac/unofficial-documentation)  ![@solvedac/unofficial-documentation banner](./assets/solvedac-ud-compact.png)
@@ -12,31 +10,29 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
+import { CoinshopProduct, InlineResponse2001 } from '../models/index.js';
 /**
  *
  */
-export class OtherApi extends runtime.BaseAPI {
+export declare class CoinsApi extends runtime.BaseAPI {
     /**
-     * solved.ac 통계를 가져옵니다.
-     * solved.ac 통계 가져오기
+     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
+     * 코인샵 판매 목록 가져오기
      */
-    async getSiteStatsRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/site/stats`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response);
-    }
+    getCoinShopProductsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<CoinshopProduct>>>;
     /**
-     * solved.ac 통계를 가져옵니다.
-     * solved.ac 통계 가져오기
+     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
+     * 코인샵 판매 목록 가져오기
      */
-    async getSiteStats(initOverrides) {
-        const response = await this.getSiteStatsRaw(initOverrides);
-        return await response.value();
-    }
+    getCoinShopProducts(initOverrides?: RequestInit): Promise<Array<CoinshopProduct>>;
+    /**
+     * 현재 코인 → 별조각 환율을 가져옵니다.
+     * 코인 → 별조각 환율 가져오기
+     */
+    getCoinsExchangeRateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2001>>;
+    /**
+     * 현재 코인 → 별조각 환율을 가져옵니다.
+     * 코인 → 별조각 환율 가져오기
+     */
+    getCoinsExchangeRate(initOverrides?: RequestInit): Promise<InlineResponse2001>;
 }

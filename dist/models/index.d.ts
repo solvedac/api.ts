@@ -40,6 +40,63 @@ export declare enum ClassDecoration {
     Gold = "gold"
 }
 /**
+ * 코인샵에서 판매하고 있는 상품입니다.
+ * @export
+ * @interface CoinshopProduct
+ */
+export interface CoinshopProduct {
+    /**
+     * 상품의 ID입니다.
+     * @type {number}
+     * @memberof CoinshopProduct
+     */
+    skuId: number;
+    /**
+     *
+     * @type {Item}
+     * @memberof CoinshopProduct
+     */
+    item?: Item;
+    /**
+     * 1회 구매에 획득하는 개수입니다.
+     * @type {number}
+     * @memberof CoinshopProduct
+     */
+    units?: number;
+    /**
+     * 가격입니다. 별조각의 경우 나누기 100을 해야 표시 가격이 됩니다.
+     * @type {number}
+     * @memberof CoinshopProduct
+     */
+    price?: number;
+    /**
+     * 가격의 단위입니다.
+     * @type {string}
+     * @memberof CoinshopProduct
+     */
+    priceUnit?: CoinshopProductPriceUnitEnum;
+    /**
+     * 아이템 사용 시간의 제한 여부입니다.
+     * @type {boolean}
+     * @memberof CoinshopProduct
+     */
+    itemUseTimeLimited?: boolean;
+    /**
+     * 아이템 구매 시간의 제한 여부입니다.
+     * @type {boolean}
+     * @memberof CoinshopProduct
+     */
+    itemSellTimeLimited?: boolean;
+}
+/**
+* @export
+* @enum {string}
+*/
+export declare enum CoinshopProductPriceUnitEnum {
+    Coins = "coins",
+    Stardusts = "stardusts"
+}
+/**
  * 사용자 정보입니다.
  * @export
  * @interface FullUser
@@ -319,23 +376,11 @@ export interface InlineResponse200 {
  */
 export interface InlineResponse2001 {
     /**
-     *
+     * 코인 → 별조각 환율입니다. 수수료 1%는 제외되어 있습니다.
      * @type {number}
      * @memberof InlineResponse2001
      */
-    _class?: number;
-    /**
-     * 이 CLASS에 속한 에센셜이 아닌 문제 수입니다.
-     * @type {number}
-     * @memberof InlineResponse2001
-     */
-    total?: number;
-    /**
-     * 이 CLASS에 속한 에센셜 문제 수입니다.
-     * @type {number}
-     * @memberof InlineResponse2001
-     */
-    essential?: number;
+    rate?: number;
 }
 /**
  *
@@ -344,17 +389,17 @@ export interface InlineResponse2001 {
  */
 export interface InlineResponse20010 {
     /**
-     * 찾은 문제 수입니다.
+     * 순위가 배정된 조직의 수입니다.
      * @type {number}
      * @memberof InlineResponse20010
      */
     count?: number;
     /**
-     * 찾은 문제 목록입니다.
-     * @type {Array<Problem>}
+     * 레이팅 순위로 정렬된 조직 목록입니다.
+     * @type {Array<Organization>}
      * @memberof InlineResponse20010
      */
-    items?: Array<Problem>;
+    items?: Array<Organization>;
 }
 /**
  *
@@ -363,66 +408,17 @@ export interface InlineResponse20010 {
  */
 export interface InlineResponse20011 {
     /**
-     *
-     * @type {Array<InlineResponse20011Autocomplete>}
+     * 찾은 문제 수입니다.
+     * @type {number}
      * @memberof InlineResponse20011
      */
-    autocomplete?: Array<InlineResponse20011Autocomplete>;
+    count?: number;
     /**
      * 찾은 문제 목록입니다.
      * @type {Array<Problem>}
      * @memberof InlineResponse20011
      */
-    problems?: Array<Problem>;
-    /**
-     * 찾은 문제 수입니다.
-     * @type {number}
-     * @memberof InlineResponse20011
-     */
-    problemCount?: number;
-    /**
-     * 찾은 사용자 목록입니다.
-     * @type {Array<User>}
-     * @memberof InlineResponse20011
-     */
-    users?: Array<User>;
-    /**
-     * 찾은 사용자 수입니다.
-     * @type {number}
-     * @memberof InlineResponse20011
-     */
-    userCount?: number;
-    /**
-     * 찾은 태그 목록입니다.
-     * @type {Array<ProblemTag>}
-     * @memberof InlineResponse20011
-     */
-    tags?: Array<ProblemTag>;
-    /**
-     * 찾은 태그 수입니다.
-     * @type {number}
-     * @memberof InlineResponse20011
-     */
-    tagCount?: number;
-}
-/**
- *
- * @export
- * @interface InlineResponse20011Autocomplete
- */
-export interface InlineResponse20011Autocomplete {
-    /**
-     * 자동완성 제목입니다. 해당 값으로 자동완성됩니다.
-     * @type {string}
-     * @memberof InlineResponse20011Autocomplete
-     */
-    caption?: string;
-    /**
-     * 자동완성 요소에 대한 설명입니다.
-     * @type {string}
-     * @memberof InlineResponse20011Autocomplete
-     */
-    description?: string;
+    items?: Array<Problem>;
 }
 /**
  *
@@ -431,17 +427,66 @@ export interface InlineResponse20011Autocomplete {
  */
 export interface InlineResponse20012 {
     /**
-     * 찾은 태그 수입니다.
+     *
+     * @type {Array<InlineResponse20012Autocomplete>}
+     * @memberof InlineResponse20012
+     */
+    autocomplete?: Array<InlineResponse20012Autocomplete>;
+    /**
+     * 찾은 문제 목록입니다.
+     * @type {Array<Problem>}
+     * @memberof InlineResponse20012
+     */
+    problems?: Array<Problem>;
+    /**
+     * 찾은 문제 수입니다.
      * @type {number}
      * @memberof InlineResponse20012
      */
-    count?: number;
+    problemCount?: number;
+    /**
+     * 찾은 사용자 목록입니다.
+     * @type {Array<User>}
+     * @memberof InlineResponse20012
+     */
+    users?: Array<User>;
+    /**
+     * 찾은 사용자 수입니다.
+     * @type {number}
+     * @memberof InlineResponse20012
+     */
+    userCount?: number;
     /**
      * 찾은 태그 목록입니다.
      * @type {Array<ProblemTag>}
      * @memberof InlineResponse20012
      */
-    items?: Array<ProblemTag>;
+    tags?: Array<ProblemTag>;
+    /**
+     * 찾은 태그 수입니다.
+     * @type {number}
+     * @memberof InlineResponse20012
+     */
+    tagCount?: number;
+}
+/**
+ *
+ * @export
+ * @interface InlineResponse20012Autocomplete
+ */
+export interface InlineResponse20012Autocomplete {
+    /**
+     * 자동완성 제목입니다. 해당 값으로 자동완성됩니다.
+     * @type {string}
+     * @memberof InlineResponse20012Autocomplete
+     */
+    caption?: string;
+    /**
+     * 자동완성 요소에 대한 설명입니다.
+     * @type {string}
+     * @memberof InlineResponse20012Autocomplete
+     */
+    description?: string;
 }
 /**
  *
@@ -450,17 +495,17 @@ export interface InlineResponse20012 {
  */
 export interface InlineResponse20013 {
     /**
-     * 찾은 사용자 수입니다.
+     * 찾은 태그 수입니다.
      * @type {number}
      * @memberof InlineResponse20013
      */
     count?: number;
     /**
-     * 찾은 사용자 목록입니다.
-     * @type {Array<RankedUser>}
+     * 찾은 태그 목록입니다.
+     * @type {Array<ProblemTag>}
      * @memberof InlineResponse20013
      */
-    items?: Array<RankedUser>;
+    items?: Array<ProblemTag>;
 }
 /**
  *
@@ -468,6 +513,25 @@ export interface InlineResponse20013 {
  * @interface InlineResponse20014
  */
 export interface InlineResponse20014 {
+    /**
+     * 찾은 사용자 수입니다.
+     * @type {number}
+     * @memberof InlineResponse20014
+     */
+    count?: number;
+    /**
+     * 찾은 사용자 목록입니다.
+     * @type {Array<RankedUser>}
+     * @memberof InlineResponse20014
+     */
+    items?: Array<RankedUser>;
+}
+/**
+ *
+ * @export
+ * @interface InlineResponse20015
+ */
+export interface InlineResponse20015 {
     /**
      * Unrated를 0, Bronze V를 1, ... Ruby II를 29, Ruby I을 30으로 표현하는 문제 레벨입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
@@ -513,37 +577,37 @@ export interface InlineResponse20014 {
      *
      * </details>
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     level?: number;
     /**
      * solved.ac에 등록된 해당 레벨의 문제 수입니다.
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     total?: number;
     /**
      * 사용자가 푼 문제 수입니다.
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     solved?: number;
     /**
      * 사용자가 부분 성공한 문제 수입니다.
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     partial?: number;
     /**
      * 사용자가 시도해본 문제 수입니다.
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     tried?: number;
     /**
      * 사용자가 해당 레벨에서 획득한 경험치의 합입니다.
      * @type {number}
-     * @memberof InlineResponse20014
+     * @memberof InlineResponse20015
      */
     exp?: number;
 }
@@ -554,6 +618,31 @@ export interface InlineResponse20014 {
  */
 export interface InlineResponse2002 {
     /**
+     *
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    _class?: number;
+    /**
+     * 이 CLASS에 속한 에센셜이 아닌 문제 수입니다.
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    total?: number;
+    /**
+     * 이 CLASS에 속한 에센셜 문제 수입니다.
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    essential?: number;
+}
+/**
+ *
+ * @export
+ * @interface InlineResponse2003
+ */
+export interface InlineResponse2003 {
+    /**
      * Unrated를 0, Bronze V를 1, ... Ruby II를 29, Ruby I을 30으로 표현하는 문제 레벨입니다.
      * 자세한 값 정보는 표1. 수치 - 이름 표를 펼쳐 참고하십시오.
      *
@@ -598,34 +687,15 @@ export interface InlineResponse2002 {
      *
      * </details>
      * @type {number}
-     * @memberof InlineResponse2002
+     * @memberof InlineResponse2003
      */
     level?: number;
     /**
      * 이 문제 수준인 문제 수입니다.
      * @type {number}
-     * @memberof InlineResponse2002
-     */
-    count?: number;
-}
-/**
- *
- * @export
- * @interface InlineResponse2003
- */
-export interface InlineResponse2003 {
-    /**
-     * 순위가 배정된 사용자의 수입니다.
-     * @type {number}
      * @memberof InlineResponse2003
      */
     count?: number;
-    /**
-     * 티어 순위로 정렬된 사용자 목록입니다.
-     * @type {Array<User>}
-     * @memberof InlineResponse2003
-     */
-    items?: Array<User>;
 }
 /**
  *
@@ -640,7 +710,7 @@ export interface InlineResponse2004 {
      */
     count?: number;
     /**
-     * CLASS 순위로 정렬된 사용자 목록입니다.
+     * 티어 순위로 정렬된 사용자 목록입니다.
      * @type {Array<User>}
      * @memberof InlineResponse2004
      */
@@ -659,7 +729,7 @@ export interface InlineResponse2005 {
      */
     count?: number;
     /**
-     * 최장 스트릭 순위로 정렬된 사용자 목록입니다.
+     * CLASS 순위로 정렬된 사용자 목록입니다.
      * @type {Array<User>}
      * @memberof InlineResponse2005
      */
@@ -678,7 +748,7 @@ export interface InlineResponse2006 {
      */
     count?: number;
     /**
-     * 기여 순위로 정렬된 사용자 목록입니다.
+     * 최장 스트릭 순위로 정렬된 사용자 목록입니다.
      * @type {Array<User>}
      * @memberof InlineResponse2006
      */
@@ -691,13 +761,13 @@ export interface InlineResponse2006 {
  */
 export interface InlineResponse2007 {
     /**
-     * 순위가 배정된 라이벌의 수입니다.
+     * 순위가 배정된 사용자의 수입니다.
      * @type {number}
      * @memberof InlineResponse2007
      */
     count?: number;
     /**
-     * 티어 순위로 정렬된 라이벌 목록입니다.
+     * 기여 순위로 정렬된 사용자 목록입니다.
      * @type {Array<User>}
      * @memberof InlineResponse2007
      */
@@ -710,13 +780,13 @@ export interface InlineResponse2007 {
  */
 export interface InlineResponse2008 {
     /**
-     * 순위가 배정된 역라이벌의 수입니다.
+     * 순위가 배정된 라이벌의 수입니다.
      * @type {number}
      * @memberof InlineResponse2008
      */
     count?: number;
     /**
-     * 티어 순위로 정렬된 역라이벌 목록입니다.
+     * 티어 순위로 정렬된 라이벌 목록입니다.
      * @type {Array<User>}
      * @memberof InlineResponse2008
      */
@@ -729,17 +799,17 @@ export interface InlineResponse2008 {
  */
 export interface InlineResponse2009 {
     /**
-     * 순위가 배정된 조직의 수입니다.
+     * 순위가 배정된 역라이벌의 수입니다.
      * @type {number}
      * @memberof InlineResponse2009
      */
     count?: number;
     /**
-     * 레이팅 순위로 정렬된 조직 목록입니다.
-     * @type {Array<Organization>}
+     * 티어 순위로 정렬된 역라이벌 목록입니다.
+     * @type {Array<User>}
      * @memberof InlineResponse2009
      */
-    items?: Array<Organization>;
+    items?: Array<User>;
 }
 /**
  *
@@ -760,6 +830,49 @@ export interface InlineResponse200Solved {
      * @memberof InlineResponse200Solved
      */
     status?: string;
+}
+/**
+ * 사용자가 사용할 수 있는 아이템입니다.
+ * @export
+ * @interface Item
+ */
+export interface Item {
+    /**
+     * 아이템의 ID입니다.
+     * @type {string}
+     * @memberof Item
+     */
+    itemId: string;
+    /**
+     * 아이템 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Item
+     */
+    itemImageUrl: string;
+    /**
+     * 최대 소유 가능 개수입니다. 호출자에 따라 달라질 수 있습니다.
+     * @type {number}
+     * @memberof Item
+     */
+    inventoryMaxUnits: number;
+    /**
+     * 아이템 사용 가능 여부입니다.
+     * @type {boolean}
+     * @memberof Item
+     */
+    usable: boolean;
+    /**
+     * 아이템의 이름입니다.
+     * @type {string}
+     * @memberof Item
+     */
+    displayName: string;
+    /**
+     * 아이템의 설명입니다.
+     * @type {string}
+     * @memberof Item
+     */
+    displayDescription: string;
 }
 /**
  * 언어입니다.
