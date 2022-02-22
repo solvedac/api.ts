@@ -15,25 +15,26 @@
 
 import * as runtime from '../runtime.js';
 import {
-    SolvedAcStatistics,
+    CoinshopProduct,
+    InlineResponse2001,
 } from '../models/index.js';
 
 /**
  * 
  */
-export class OtherApi extends runtime.BaseAPI {
+export class CoinsApi extends runtime.BaseAPI {
 
     /**
-     * solved.ac 통계를 가져옵니다.
-     * solved.ac 통계 가져오기
+     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다. 
+     * 코인샵 판매 목록 가져오기
      */
-    async getSiteStatsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SolvedAcStatistics>> {
+    async getCoinShopProductsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<CoinshopProduct>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/site/stats`,
+            path: `/coins/shop/list`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -43,11 +44,39 @@ export class OtherApi extends runtime.BaseAPI {
     }
 
     /**
-     * solved.ac 통계를 가져옵니다.
-     * solved.ac 통계 가져오기
+     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다. 
+     * 코인샵 판매 목록 가져오기
      */
-    async getSiteStats(initOverrides?: RequestInit): Promise<SolvedAcStatistics> {
-        const response = await this.getSiteStatsRaw(initOverrides);
+    async getCoinShopProducts(initOverrides?: RequestInit): Promise<Array<CoinshopProduct>> {
+        const response = await this.getCoinShopProductsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 현재 코인 → 별조각 환율을 가져옵니다. 
+     * 코인 → 별조각 환율 가져오기
+     */
+    async getCoinsExchangeRateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<InlineResponse2001>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/coins/exchange_rate`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 현재 코인 → 별조각 환율을 가져옵니다. 
+     * 코인 → 별조각 환율 가져오기
+     */
+    async getCoinsExchangeRate(initOverrides?: RequestInit): Promise<InlineResponse2001> {
+        const response = await this.getCoinsExchangeRateRaw(initOverrides);
         return await response.value();
     }
 

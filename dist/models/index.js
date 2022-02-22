@@ -10,6 +10,15 @@ export var ClassDecoration;
     ClassDecoration["Gold"] = "gold";
 })(ClassDecoration || (ClassDecoration = {}));
 /**
+* @export
+* @enum {string}
+*/
+export var CoinshopProductPriceUnitEnum;
+(function (CoinshopProductPriceUnitEnum) {
+    CoinshopProductPriceUnitEnum["Coins"] = "coins";
+    CoinshopProductPriceUnitEnum["Stardusts"] = "stardusts";
+})(CoinshopProductPriceUnitEnum || (CoinshopProductPriceUnitEnum = {}));
+/**
  * 난이도 아이콘 표시 정책입니다.
  * @export
  * @enum {string}
