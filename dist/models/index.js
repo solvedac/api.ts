@@ -1,4 +1,28 @@
 /**
+ * 뱃지 종류입니다.
+ * @export
+ * @enum {string}
+ */
+export var BadgeCategory;
+(function (BadgeCategory) {
+    BadgeCategory["Achievement"] = "achievement";
+    BadgeCategory["Season"] = "season";
+    BadgeCategory["Event"] = "event";
+    BadgeCategory["Contest"] = "contest";
+})(BadgeCategory || (BadgeCategory = {}));
+/**
+ * 뱃지 티어입니다.
+ * @export
+ * @enum {string}
+ */
+export var BadgeTier;
+(function (BadgeTier) {
+    BadgeTier["Bronze"] = "bronze";
+    BadgeTier["Silver"] = "silver";
+    BadgeTier["Gold"] = "gold";
+    BadgeTier["Master"] = "master";
+})(BadgeTier || (BadgeTier = {}));
+/**
  * 클래스 치장입니다.
  * @export
  * @enum {string}

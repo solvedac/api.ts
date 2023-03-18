@@ -10,8 +10,11 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import { FullUser, InlineResponse20015 } from '../models/index.js';
+import { FullUser, InlineResponse20015, Organization } from '../models/index.js';
 export interface GetUserRequest {
+    handle: string;
+}
+export interface GetUserOrganizationsRequest {
     handle: string;
 }
 export interface GetUserProblemStatsRequest {
@@ -31,6 +34,16 @@ export declare class UserApi extends runtime.BaseAPI {
      * 사용자 정보 가져오기
      */
     getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<FullUser>;
+    /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    getUserOrganizationsRaw(requestParameters: GetUserOrganizationsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<Organization>>>;
+    /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    getUserOrganizations(requestParameters: GetUserOrganizationsRequest, initOverrides?: RequestInit): Promise<Array<Organization>>;
     /**
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
