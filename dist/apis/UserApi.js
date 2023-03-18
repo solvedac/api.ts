@@ -46,6 +46,35 @@ export class UserApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    async getUserOrganizationsRaw(requestParameters, initOverrides) {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle', 'Required parameter requestParameters.handle was null or undefined when calling getUserOrganizations.');
+        }
+        const queryParameters = {};
+        if (requestParameters.handle !== undefined) {
+            queryParameters['handle'] = requestParameters.handle;
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/organizations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    async getUserOrganizations(requestParameters, initOverrides) {
+        const response = await this.getUserOrganizationsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * 사용자가 푼 문제 개수를 문제 수준별로 가져옵니다.
      * 사용자가 푼 문제 개수 수준별로 가져오기
      */

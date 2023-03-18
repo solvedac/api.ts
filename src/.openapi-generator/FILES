@@ -1,4 +1,6 @@
 apis/AccountApi.ts
+apis/BackgroundApi.ts
+apis/BadgeApi.ts
 apis/CoinsApi.ts
 apis/DefaultApi.ts
 apis/OtherApi.ts

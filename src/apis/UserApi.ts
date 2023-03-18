@@ -17,9 +17,14 @@ import * as runtime from '../runtime.js';
 import {
     FullUser,
     InlineResponse20015,
+    Organization,
 } from '../models/index.js';
 
 export interface GetUserRequest {
+    handle: string;
+}
+
+export interface GetUserOrganizationsRequest {
     handle: string;
 }
 
@@ -65,6 +70,42 @@ export class UserApi extends runtime.BaseAPI {
      */
     async getUser(requestParameters: GetUserRequest, initOverrides?: RequestInit): Promise<FullUser> {
         const response = await this.getUserRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    async getUserOrganizationsRaw(requestParameters: GetUserOrganizationsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<Organization>>> {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling getUserOrganizations.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.handle !== undefined) {
+            queryParameters['handle'] = requestParameters.handle;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/organizations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 사용자가 속한 조직 목록를 가져옵니다.
+     * 사용자가 속한 조직 목록 가져오기
+     */
+    async getUserOrganizations(requestParameters: GetUserOrganizationsRequest, initOverrides?: RequestInit): Promise<Array<Organization>> {
+        const response = await this.getUserOrganizationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
