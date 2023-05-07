@@ -1,4 +1,126 @@
 /**
+ * 사용자가 사용할 수 있는 배경입니다.
+ * @export
+ * @interface Background
+ */
+export interface Background {
+    /**
+     * 배경의 ID입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    backgroundId: string;
+    /**
+     * 배경 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    backgroundImageUrl: string;
+    /**
+     * 배경 사진이 없을 때 대체로 사용할 사진으로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    fallbackBackgroundImageUrl?: string | null;
+    /**
+     * 배경 비디오로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    backgroundVideoUrl?: string | null;
+    /**
+     * 해당 배경을 획득한 사용자의 수입니다.
+     * @type {number}
+     * @memberof Background
+     */
+    unlockedUserCount: number;
+    /**
+     * 배경의 이름입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    displayName: string;
+    /**
+     * 배경의 설명입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    displayDescription: string;
+    /**
+     * 해당 배경을 얻을 수 있는 조건입니다.
+     * @type {string}
+     * @memberof Background
+     */
+    conditions: string;
+    /**
+     * 해당 배경을 얻을 수 있는 조건이 숨겨져 있는지 여부입니다.
+     * @type {boolean}
+     * @memberof Background
+     */
+    hiddenConditions: boolean;
+    /**
+     * 해당 배경이 일러스트인지 여부입니다.
+     * @type {boolean}
+     * @memberof Background
+     */
+    isIllust: boolean;
+    /**
+     * 해당 배경을 만든 사람들의 정보입니다.
+     * @type {Array<BackgroundAuthors>}
+     * @memberof Background
+     */
+    authors: Array<BackgroundAuthors>;
+}
+/**
+ *
+ * @export
+ * @interface BackgroundAuthors
+ */
+export interface BackgroundAuthors {
+    /**
+     * 작가의 ID입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    authorId?: string;
+    /**
+     * 작가의 역할입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    role?: string;
+    /**
+     * 작가의 홈페이지로 가는 하이퍼링크입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    authorUrl?: string | null;
+    /**
+     * 작가의 사용자 ID입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    handle?: string;
+    /**
+     * 작가의 트위터 ID입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    twitter?: string | null;
+    /**
+     * 작가의 인스타그램 ID입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    instagram?: string | null;
+    /**
+     * 작가의 이름입니다.
+     * @type {string}
+     * @memberof BackgroundAuthors
+     */
+    displayName?: string;
+}
+/**
  * 사용자가 사용할 수 있는 뱃지입니다.
  * @export
  * @interface Badge
@@ -28,6 +150,40 @@ export interface Badge {
      * @memberof Badge
      */
     displayDescription: string;
+    /**
+     *
+     * @type {BadgeTier}
+     * @memberof Badge
+     */
+    badgeTier?: BadgeTier;
+    /**
+     *
+     * @type {BadgeCategory}
+     * @memberof Badge
+     */
+    badgeCategory?: BadgeCategory;
+}
+/**
+ * 뱃지 종류입니다.
+ * @export
+ * @enum {string}
+ */
+export declare enum BadgeCategory {
+    Achievement = "achievement",
+    Season = "season",
+    Event = "event",
+    Contest = "contest"
+}
+/**
+ * 뱃지 티어입니다.
+ * @export
+ * @enum {string}
+ */
+export declare enum BadgeTier {
+    Bronze = "bronze",
+    Silver = "silver",
+    Gold = "gold",
+    Master = "master"
 }
 /**
  * 클래스 치장입니다.
@@ -115,23 +271,17 @@ export interface FullUser {
      */
     bio: string;
     /**
-     * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Organization>}
+     * 사용자가 지금 사용 중인 뱃지의 아이디입니다.
+     * @type {string}
      * @memberof FullUser
      */
-    organizations: Array<Organization>;
+    badgeId?: string | null;
     /**
-     *
-     * @type {Badge}
+     * 사용자가 지금 사용 중인 배경의 아이디입니다.
+     * @type {string}
      * @memberof FullUser
      */
-    badge?: Badge;
-    /**
-     *
-     * @type {UserBackground}
-     * @memberof FullUser
-     */
-    background: UserBackground;
+    backgroundId: string;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
@@ -265,11 +415,41 @@ export interface FullUser {
      */
     maxStreak: number;
     /**
+     * 사용자가 가지고 있는 코인의 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    coins: number;
+    /**
+     * 사용자가 가지고 있는 별가루의 수입니다.
+     * @type {number}
+     * @memberof FullUser
+     */
+    stardusts: number;
+    /**
+     * 사용자가 가입한 날짜입니다.
+     * @type {Date}
+     * @memberof FullUser
+     */
+    joinedAt: Date;
+    /**
+     * 사용자의 정지 종료 날짜입니다.
+     * @type {Date}
+     * @memberof FullUser
+     */
+    bannedUntil: Date;
+    /**
+     * 사용자의 PRO 종료 날짜입니다.
+     * @type {Date}
+     * @memberof FullUser
+     */
+    proUntil: Date;
+    /**
      * 사용자의 순위입니다.
      * @type {number}
      * @memberof FullUser
      */
-    rank?: number;
+    rank: number;
     /**
      * 라이벌 여부입니다.
      * @type {boolean}
@@ -289,12 +469,6 @@ export interface FullUser {
  * @interface FullUserAllOf
  */
 export interface FullUserAllOf {
-    /**
-     * 사용자의 순위입니다.
-     * @type {number}
-     * @memberof FullUserAllOf
-     */
-    rank?: number;
     /**
      * 라이벌 여부입니다.
      * @type {boolean}
@@ -1151,23 +1325,17 @@ export interface RankedUser {
      */
     bio: string;
     /**
-     * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Organization>}
+     * 사용자가 지금 사용 중인 뱃지의 아이디입니다.
+     * @type {string}
      * @memberof RankedUser
      */
-    organizations: Array<Organization>;
+    badgeId?: string | null;
     /**
-     *
-     * @type {Badge}
+     * 사용자가 지금 사용 중인 배경의 아이디입니다.
+     * @type {string}
      * @memberof RankedUser
      */
-    badge?: Badge;
-    /**
-     *
-     * @type {UserBackground}
-     * @memberof RankedUser
-     */
-    background: UserBackground;
+    backgroundId: string;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
@@ -1301,11 +1469,41 @@ export interface RankedUser {
      */
     maxStreak: number;
     /**
+     * 사용자가 가지고 있는 코인의 수입니다.
+     * @type {number}
+     * @memberof RankedUser
+     */
+    coins: number;
+    /**
+     * 사용자가 가지고 있는 별가루의 수입니다.
+     * @type {number}
+     * @memberof RankedUser
+     */
+    stardusts: number;
+    /**
+     * 사용자가 가입한 날짜입니다.
+     * @type {Date}
+     * @memberof RankedUser
+     */
+    joinedAt: Date;
+    /**
+     * 사용자의 정지 종료 날짜입니다.
+     * @type {Date}
+     * @memberof RankedUser
+     */
+    bannedUntil: Date;
+    /**
+     * 사용자의 PRO 종료 날짜입니다.
+     * @type {Date}
+     * @memberof RankedUser
+     */
+    proUntil: Date;
+    /**
      * 사용자의 순위입니다.
      * @type {number}
      * @memberof RankedUser
      */
-    rank?: number;
+    rank: number;
 }
 /**
  *
@@ -1586,23 +1784,17 @@ export interface User {
      */
     bio: string;
     /**
-     * 사용자가 속한 조직 목록입니다.
-     * @type {Array<Organization>}
+     * 사용자가 지금 사용 중인 뱃지의 아이디입니다.
+     * @type {string}
      * @memberof User
      */
-    organizations: Array<Organization>;
+    badgeId?: string | null;
     /**
-     *
-     * @type {Badge}
+     * 사용자가 지금 사용 중인 배경의 아이디입니다.
+     * @type {string}
      * @memberof User
      */
-    badge?: Badge;
-    /**
-     *
-     * @type {UserBackground}
-     * @memberof User
-     */
-    background: UserBackground;
+    backgroundId: string;
     /**
      * 사용자의 프로필 사진으로 가는 하이퍼링크입니다.
      * @type {string}
@@ -1735,47 +1927,40 @@ export interface User {
      * @memberof User
      */
     maxStreak: number;
-}
-/**
- * 사용자의 배경 사진입니다.
- * @export
- * @interface UserBackground
- */
-export interface UserBackground {
     /**
-     * 배경의 고유 ID입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자가 가지고 있는 코인의 수입니다.
+     * @type {number}
+     * @memberof User
      */
-    backgroundId?: string;
+    coins: number;
     /**
-     * 배경 사진으로 가는 하이퍼링크입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자가 가지고 있는 별가루의 수입니다.
+     * @type {number}
+     * @memberof User
      */
-    backgroundImageUrl?: string;
+    stardusts: number;
     /**
-     * 배경의 제작자를 표시하는 문구입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자가 가입한 날짜입니다.
+     * @type {Date}
+     * @memberof User
      */
-    author?: string;
+    joinedAt: Date;
     /**
-     * 배경의 제작자와 관련된 사이트로 가는 하이퍼링크입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자의 정지 종료 날짜입니다.
+     * @type {Date}
+     * @memberof User
      */
-    authorUrl?: string;
+    bannedUntil: Date;
     /**
-     * 배경의 이름입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자의 PRO 종료 날짜입니다.
+     * @type {Date}
+     * @memberof User
      */
-    displayName?: string;
+    proUntil: Date;
     /**
-     * 배경의 설명입니다.
-     * @type {string}
-     * @memberof UserBackground
+     * 사용자의 순위입니다.
+     * @type {number}
+     * @memberof User
      */
-    displayDescription?: string;
+    rank: number;
 }

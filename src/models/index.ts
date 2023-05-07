@@ -811,7 +811,13 @@ export interface InlineResponse2002 {
      * @type {number}
      * @memberof InlineResponse2002
      */
-    essential?: number;
+    essentials?: number;
+    /**
+     * 이 CLASS를 취득하기 위한 최소 문제 수입니다.
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    criteria?: number;
 }
 /**
  * 
