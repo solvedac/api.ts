@@ -1,6 +1,6 @@
 {
   "name": "@solvedac-community/api",
-  "version": "3.2022.02+b1",
+  "version": "3.2024.3+b1",
   "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
   "type": "module",
   "main": "./dist/esm/index.js",
