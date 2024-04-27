@@ -42,15 +42,6 @@ jobs:
           for file in $(find src/cjs -type f -name *.ts); do
             mv $file "$(dirname $file)/$(basename $file .ts).cts"
           done
-          for file in `find src -type f`; do
-            sed -ri "s/from '([^']+)\/apis'/from '\1\/apis\/index.js'/" $file
-            sed -ri "s/from '([^']+)\/models'/from '\1\/models\/index.js'/" $file
-            sed -ri "s/from '([^']+)'/from '\1.js'/" $file
-            sed -ri "s/from '([^']+\.js)\.js'/from '\1'/" $file
-          done
-      - name: Tricky TSC Safety
-        run: |
-          sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
       - name: Build
         run: npm run build
       - name: Update Version
