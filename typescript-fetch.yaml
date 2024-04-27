@@ -1,4 +1,4 @@
-inputSpec: "unofficial-documentation/src/openapi.yaml"
+inputSpec: "unofficial-documentation/tsp-output/@typespec/openapi3/openapi.yaml"
 generatorName: "typescript-fetch"
 outputDir: "src"
 validateSpec: false

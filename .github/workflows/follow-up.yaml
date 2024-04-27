@@ -1,30 +1,36 @@
 name: Follow Up
 
-on: workflow_dispatch
-
+on:
+  workflow_dispatch:
+    inputs:
+      run-id:
+        description: docs page GHA run id
+        required: true
+        type: string
 jobs:
   follow-up:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
         with:
-          repository: solvedac/unofficial-documentation
+          name: github-pages
           path: unofficial-documentation
-      - uses: actions/setup-java@v2
+          repository: solvedac/unofficial-documentation
+          github-token: ${{ secrets.PAT_FOLLOW_UP }}
+          run-id: ${{ github.event.inputs.run-id }}
+      - run: tar -xf artifact.tar ./tsp-output/@typespec/openapi3/openapi.yaml
+        working-directory: unofficial-documentation
+      - run: ls -R
+      - uses: actions/setup-java@v4
         with:
-          distribution: adopt
-          java-version: 11
-      - uses: actions/setup-node@v2
+          distribution: temurin
+          java-version: 21
+      - uses: actions/setup-node@v4
       - name: Install Dependencies
         run: npm install
-      - name: Override OpenAPI Version to 3.0.x (generator does not support 3.1)
-        run: |
-          for file in `find unofficial-documentation/src -type f`; do
-            sed -i 's/openapi: "3.1.0"/openapi: "3.0.0"/' $file
-          done
       - name: Generate
-        run: npm run generate
+        run: npx @openapitools/openapi-generator-cli batch --clean typescript-fetch.yaml
       - name: Tricky TSC Safety
         run: |
           sed -i 's/fetchApi(): FetchAPI/fetchApi(): FetchAPI | undefined/' src/runtime.ts
@@ -40,18 +46,20 @@ jobs:
         run: npm run build
       - name: Update Version
         run: |
-          sed -ri "s/\"version\": \"[^\"]+\"/\"version\": \"`sed -rn 's/^.*  version: "([^"]+)".*$/\1/p' unofficial-documentation/src/openapi.yaml`\"/" package.json
+          file=unofficial-documentation/tsp-output/@typespec/openapi3/openapi.yaml
+          version=$(sed -rn 's/\s+version:\s*"([^"]+)"/\1/p' $file | sed -rn 's/\.0+([0-9]+)/.\1/p')
+          sed -ri "s/\"version\": \"[^\"]+\"/\"version\": \"$version\"/" package.json
       - name: Make Deno Friendly
         run: |
           for file in `find src -type f -name "index.ts"`; do
             cp $file `echo $file | sed s/index/mod/`
           done
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           commit-message: Follow-up solvedac/unofficial-documentation
           title: Follow-up solvedac/unofficial-documentation
           body: |
-            This Pull Request will update the typescript sources.
+            This Pull Request will update the sources based on upstream docs.
             It is automatically created by GitHub Actions.
           labels: follow-up
