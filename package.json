@@ -3,35 +3,31 @@
   "version": "3.2022.02+b1",
   "description": "자동 생성되는 TypeScript solved.ac API 클라이언트",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./apis": "./dist/apis/index.js",
-    "./models": "./dist/models/index.js",
+    ".": {
+      "default": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/esm/index.d.ts"
+    },
+    "./apis": {
+      "default": "./dist/esm/apis/index.js",
+      "import": "./dist/esm/apis/index.js",
+      "require": "./dist/cjs/apis/index.cjs",
+      "types": "./dist/esm/apis/index.d.ts"
+    },
+    "./models": {
+      "default": "./dist/esm/models/index.js",
+      "import": "./dist/esm/models/index.js",
+      "require": "./dist/cjs/models/index.cjs",
+      "types": "./dist/esm/models/index.d.ts"
+    },
     "./*": "./*"
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./*"
-      ],
-      "apis": [
-        "./dist/apis/index.d.ts"
-      ],
-      "apis/*": [
-        "./dist/apis/*"
-      ],
-      "models": [
-        "./dist/models/index.d.ts"
-      ],
-      "models/*": [
-        "./dist/models/*"
-      ]
-    }
-  },
   "scripts": {
-    "build": "rm -rf dist && tsc"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

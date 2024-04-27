@@ -1,10 +1,10 @@
 inputSpec: "unofficial-documentation/tsp-output/@typespec/openapi3/openapi.yaml"
 generatorName: "typescript-fetch"
-outputDir: "src/esm"
+outputDir: "src/cjs"
 validateSpec: false
 generateAliasAsModel: true
 additionalProperties:
   supportsES6: true
   typescriptThreePlus: true
   withoutRuntimeChecks: true
-  importFileExtension: '.js'
+  importFileExtension: '.cjs'

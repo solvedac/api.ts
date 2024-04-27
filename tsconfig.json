@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-
     "declaration": true,
 
     "allowJs": false,
@@ -10,7 +7,10 @@
 
     "strict": true,
 
-    "moduleResolution": "node",
+    "target": "ES2017",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowArbitraryExtensions": true,
 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
