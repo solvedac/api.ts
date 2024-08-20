@@ -10,9 +10,17 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.cjs';
-import type { GetOrganizationRankingByACRating200Response, GetRankingByClass200Response, Language, OrganizationType } from '../models/index.cjs';
+import type { GetOrganizationRankingByACRating200Response, GetRankingByArenaRatingInOrganization200Response, GetRankingByClass200Response, Language, OrganizationType } from '../models/index.cjs';
 export interface GetOrganizationRankingByACRatingRequest {
     type?: OrganizationType;
+    page?: number;
+}
+export interface GetRankingByACRatingInOrganizationRequest {
+    organizationId: number;
+    page?: number;
+}
+export interface GetRankingByArenaRatingInOrganizationRequest {
+    organizationId: number;
     page?: number;
 }
 export interface GetRankingByClassRequest {
@@ -53,6 +61,26 @@ export declare class RankingApi extends runtime.BaseAPI {
      * 문제풀이 레이팅 순 단체 랭킹 가져오기
      */
     getOrganizationRankingByACRating(requestParameters?: GetOrganizationRankingByACRatingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOrganizationRankingByACRating200Response>;
+    /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    getRankingByACRatingInOrganizationRaw(requestParameters: GetRankingByACRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>>;
+    /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    getRankingByACRatingInOrganization(requestParameters: GetRankingByACRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response>;
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    getRankingByArenaRatingInOrganizationRaw(requestParameters: GetRankingByArenaRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>>;
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    getRankingByArenaRatingInOrganization(requestParameters: GetRankingByArenaRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response>;
     /**
      * CLASS가 높은 사용자가 먼저 오도록 정렬한 사용자 목록을 가져옵니다.
      * CLASS 순 사용자 랭킹 가져오기

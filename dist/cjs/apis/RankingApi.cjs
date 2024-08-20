@@ -72,6 +72,70 @@ class RankingApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByACRatingInOrganizationRaw(requestParameters, initOverrides) {
+        if (requestParameters['organizationId'] == null) {
+            throw new runtime.RequiredError('organizationId', 'Required parameter "organizationId" was null or undefined when calling getRankingByACRatingInOrganization().');
+        }
+        const queryParameters = {};
+        if (requestParameters['organizationId'] != null) {
+            queryParameters['organizationId'] = requestParameters['organizationId'];
+        }
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/ranking/in_organization`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByACRatingInOrganization(requestParameters, initOverrides) {
+        const response = await this.getRankingByACRatingInOrganizationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByArenaRatingInOrganizationRaw(requestParameters, initOverrides) {
+        if (requestParameters['organizationId'] == null) {
+            throw new runtime.RequiredError('organizationId', 'Required parameter "organizationId" was null or undefined when calling getRankingByArenaRatingInOrganization().');
+        }
+        const queryParameters = {};
+        if (requestParameters['organizationId'] != null) {
+            queryParameters['organizationId'] = requestParameters['organizationId'];
+        }
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/ranking/arena_in_organization`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByArenaRatingInOrganization(requestParameters, initOverrides) {
+        const response = await this.getRankingByArenaRatingInOrganizationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * CLASS가 높은 사용자가 먼저 오도록 정렬한 사용자 목록을 가져옵니다.
      * CLASS 순 사용자 랭킹 가져오기
      */

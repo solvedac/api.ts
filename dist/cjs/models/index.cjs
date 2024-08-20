@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VerifyCredentialsUserWithSettingsClassDecorationEnum = exports.VerifyCredentialsUserWithSettingsClassEnum = exports.VerifyCredentialsUserSettingsShowMovieBackgroundEnum = exports.VerifyCredentialsUserSettingsShowIllustBackgroundEnum = exports.VerifyCredentialsUserSettingsSiteLanguageEnum = exports.VerifyCredentialsUserSettingsProHideAdsEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnClassIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnTierIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnRatingIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostHandleEnum = exports.VerifyCredentialsUserSettingsScreenThemeEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnProblemSolveEnum = exports.UserClassDecorationEnum = exports.UserClassEnum = exports.SolveTier = exports.SocialUserClassDecorationEnum = exports.SocialUserClassEnum = exports.SearchProblemQuerySort = exports.SearchProblemQueryDirection = exports.RivalUserClassDecorationEnum = exports.RivalUserClassEnum = exports.ProblemLevel = exports.OrganizationType = exports.Language = exports.GetSearchAutoCompletionsUserEntryClassDecorationEnum = exports.GetSearchAutoCompletionsUserEntryClassEnum = exports.GetClassesProblemCountClassEntryClassEnum = exports.CoinShopProductPriceUnitEnum = exports.BadgeTier = exports.BadgeCategory = exports.BackgroundCategory = exports.ArenaTier = void 0;
+exports.VerifyCredentialsUserWithSettingsClassDecorationEnum = exports.VerifyCredentialsUserWithSettingsClassEnum = exports.VerifyCredentialsUserSettingsShowMovieBackgroundEnum = exports.VerifyCredentialsUserSettingsShowIllustBackgroundEnum = exports.VerifyCredentialsUserSettingsSiteLanguageEnum = exports.VerifyCredentialsUserSettingsProHideAdsEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnClassIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnTierIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnRatingIncreaseEnum = exports.VerifyCredentialsUserSettingsTwitterPostHandleEnum = exports.VerifyCredentialsUserSettingsScreenThemeEnum = exports.VerifyCredentialsUserSettingsTwitterPostOnProblemSolveEnum = exports.UserClassDecorationEnum = exports.UserClassEnum = exports.SolveTier = exports.SocialUserClassDecorationEnum = exports.SocialUserClassEnum = exports.SearchProblemQuerySort = exports.SearchProblemQueryDirection = exports.RivalUserClassDecorationEnum = exports.RivalUserClassEnum = exports.ProblemLevel = exports.OrganizationType = exports.Language = exports.GetUserClassStatsClassStatClassEnum = exports.GetSearchAutoCompletionsUserEntryClassDecorationEnum = exports.GetSearchAutoCompletionsUserEntryClassEnum = exports.GetClassesProblemCountClassEntryClassEnum = exports.CoinShopProductPriceUnitEnum = exports.BadgeTier = exports.BadgeCategory = exports.BackgroundCategory = exports.ArenaTier = void 0;
 /**
  * <solved-icon type="arena-tier:0"></solved-icon> <span class="arena-tier unrated">Unrated</span>를 0,
  * <solved-icon type="arena-tier:1"></solved-icon> <span class="arena-tier c">C</span>를 1,
@@ -128,6 +128,21 @@ exports.GetSearchAutoCompletionsUserEntryClassDecorationEnum = {
     None: 'none',
     Silver: 'silver',
     Gold: 'gold'
+};
+/**
+ * @export
+ */
+exports.GetUserClassStatsClassStatClassEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5,
+    NUMBER_6: 6,
+    NUMBER_7: 7,
+    NUMBER_8: 8,
+    NUMBER_9: 9,
+    NUMBER_10: 10
 };
 /**
  * solved.ac에서 지원하는 사용자 언어입니다

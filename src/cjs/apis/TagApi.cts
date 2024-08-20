@@ -13,37 +13,47 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime.cjs';
 import type {
-  CoinShopProduct,
-  GetCoinStardustExchangeRateExchangeRate,
-  Language,
-} from '../models/index.js';
+  ProblemTag,
+  SearchProblemTag200Response,
+} from '../models/index.cjs';
 
-export interface GetCoinShopProductsRequest {
-    xSolvedacLanguage?: Language;
+export interface GetTagByKeyRequest {
+    key: string;
+}
+
+export interface GetTagListRequest {
+    page?: number;
 }
 
 /**
  * 
  */
-export class CoinsApi extends runtime.BaseAPI {
+export class TagApi extends runtime.BaseAPI {
 
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    async getCoinShopProductsRaw(requestParameters: GetCoinShopProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CoinShopProduct>>> {
+    async getTagByKeyRaw(requestParameters: GetTagByKeyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProblemTag>> {
+        if (requestParameters['key'] == null) {
+            throw new runtime.RequiredError(
+                'key',
+                'Required parameter "key" was null or undefined when calling getTagByKey().'
+            );
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters['key'] != null) {
+            queryParameters['key'] = requestParameters['key'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters['xSolvedacLanguage'] != null) {
-            headerParameters['x-solvedac-language'] = String(requestParameters['xSolvedacLanguage']);
-        }
-
         const response = await this.request({
-            path: `/coins/shop/list`,
+            path: `/tag/show`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -53,25 +63,29 @@ export class CoinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    async getCoinShopProducts(requestParameters: GetCoinShopProductsRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CoinShopProduct>> {
-        const response = await this.getCoinShopProductsRaw(requestParameters, initOverrides);
+    async getTagByKey(requestParameters: GetTagByKeyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProblemTag> {
+        const response = await this.getTagByKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    async getCoinStardustExchangeRateRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCoinStardustExchangeRateExchangeRate>> {
+    async getTagListRaw(requestParameters: GetTagListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchProblemTag200Response>> {
         const queryParameters: any = {};
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/coins/exchange_rate`,
+            path: `/tag/list`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -81,11 +95,11 @@ export class CoinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    async getCoinStardustExchangeRate(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCoinStardustExchangeRateExchangeRate> {
-        const response = await this.getCoinStardustExchangeRateRaw(initOverrides);
+    async getTagList(requestParameters: GetTagListRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchProblemTag200Response> {
+        const response = await this.getTagListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

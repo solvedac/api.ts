@@ -10,32 +10,23 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.cjs';
-import type { CoinShopProduct, GetCoinStardustExchangeRateExchangeRate, Language } from '../models/index.cjs';
-export interface GetCoinShopProductsRequest {
+import type { Language, Post } from '../models/index.cjs';
+export interface GetPostByIdRequest {
+    postId: string;
     xSolvedacLanguage?: Language;
 }
 /**
  *
  */
-export declare class CoinsApi extends runtime.BaseAPI {
+export declare class PostApi extends runtime.BaseAPI {
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 제목의 게시글을 가져옵니다.
+     * 게시글 제목으로 게시글 가져오기
      */
-    getCoinShopProductsRaw(requestParameters: GetCoinShopProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CoinShopProduct>>>;
+    getPostByIdRaw(requestParameters: GetPostByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Post>>;
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 제목의 게시글을 가져옵니다.
+     * 게시글 제목으로 게시글 가져오기
      */
-    getCoinShopProducts(requestParameters?: GetCoinShopProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CoinShopProduct>>;
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    getCoinStardustExchangeRateRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCoinStardustExchangeRateExchangeRate>>;
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    getCoinStardustExchangeRate(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCoinStardustExchangeRateExchangeRate>;
+    getPostById(requestParameters: GetPostByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Post>;
 }

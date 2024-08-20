@@ -10,15 +10,27 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import type { GetProblemsByIdList200Response, GetUserProblemStatsProblemStat, Language, Organization, SocialUser } from '../models/index.js';
+import type { GetProblemsByIdList200Response, GetUserClassStatsClassStat, GetUserContributionStatsContributionStat, GetUserProblemStatsProblemStat, GetUserProblemTagStats200Response, Language, Organization, SocialUser, UserAdditionalInfo } from '../models/index.js';
+export interface GetUserAdditionalInfoRequest {
+    handle: string;
+}
 export interface GetUserByHandleRequest {
     handle: string;
     xSolvedacLanguage?: Language;
+}
+export interface GetUserClassStatsRequest {
+    handle: string;
+}
+export interface GetUserContributionStatsRequest {
+    handle: string;
 }
 export interface GetUserOrganizationsRequest {
     handle: string;
 }
 export interface GetUserProblemStatsRequest {
+    handle: string;
+}
+export interface GetUserProblemTagStatsRequest {
     handle: string;
 }
 export interface GetUserTop100Request {
@@ -30,6 +42,16 @@ export interface GetUserTop100Request {
  */
 export declare class UserApi extends runtime.BaseAPI {
     /**
+     * 해당 핸들을 가진 사용자의 부가 정보를 가져옵니다.
+     * 사용자 핸들로 부가 정보 가져오기
+     */
+    getUserAdditionalInfoRaw(requestParameters: GetUserAdditionalInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserAdditionalInfo>>;
+    /**
+     * 해당 핸들을 가진 사용자의 부가 정보를 가져옵니다.
+     * 사용자 핸들로 부가 정보 가져오기
+     */
+    getUserAdditionalInfo(requestParameters: GetUserAdditionalInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserAdditionalInfo>;
+    /**
      * 해당 핸들의 사용자 정보를 가져옵니다. 만약 요청자가 로그인 중이라면 라이벌 여부도 가져옵니다. 로그인 중이 아니라면 라이벌 등 로그인해야 알 수 있는 정보는 기본값 처리됩니다.
      * 사용자 핸들로 정보 가져오기
      */
@@ -39,6 +61,26 @@ export declare class UserApi extends runtime.BaseAPI {
      * 사용자 핸들로 정보 가져오기
      */
     getUserByHandle(requestParameters: GetUserByHandleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SocialUser>;
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 클래스별로 나누어 가져옵니다.
+     * 클래스별로 사용자가 푼 문제 수 가져오기
+     */
+    getUserClassStatsRaw(requestParameters: GetUserClassStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GetUserClassStatsClassStat>>>;
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 클래스별로 나누어 가져옵니다.
+     * 클래스별로 사용자가 푼 문제 수 가져오기
+     */
+    getUserClassStats(requestParameters: GetUserClassStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GetUserClassStatsClassStat>>;
+    /**
+     * 해당 핸들의 사용자가 기여한 문제 수를 문제 수준별로 나누어 가져옵니다.
+     * 문제 수준별로 사용자가 기여한 문제 수 가져오기
+     */
+    getUserContributionStatsRaw(requestParameters: GetUserContributionStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GetUserContributionStatsContributionStat>>>;
+    /**
+     * 해당 핸들의 사용자가 기여한 문제 수를 문제 수준별로 나누어 가져옵니다.
+     * 문제 수준별로 사용자가 기여한 문제 수 가져오기
+     */
+    getUserContributionStats(requestParameters: GetUserContributionStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GetUserContributionStatsContributionStat>>;
     /**
      * 해당 핸들의 사용자 정보를 가져옵니다. 만약 요청자가 로그인 중이라면 라이벌 여부도 가져옵니다. 로그인 중이 아니라면 라이벌 등 로그인해야 알 수 있는 정보는 기본값 처리됩니다.
      * 사용자 핸들로 단체 가져오기
@@ -59,6 +101,16 @@ export declare class UserApi extends runtime.BaseAPI {
      * 문제 수준별로 사용자가 푼 문제 수 가져오기
      */
     getUserProblemStats(requestParameters: GetUserProblemStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GetUserProblemStatsProblemStat>>;
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 태그별로 나누어 가져옵니다.
+     * 태그별로 사용자가 푼 문제 수 가져오기
+     */
+    getUserProblemTagStatsRaw(requestParameters: GetUserProblemTagStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserProblemTagStats200Response>>;
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 태그별로 나누어 가져옵니다.
+     * 태그별로 사용자가 푼 문제 수 가져오기
+     */
+    getUserProblemTagStats(requestParameters: GetUserProblemTagStatsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUserProblemTagStats200Response>;
     /**
      * 사용자가 푼 문제 중 문제 수준이 높은 상위 100 문제를 가져옵니다
      * 상위 100 문제 가져오기

@@ -13,7 +13,9 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextApiResponse = exports.BlobApiResponse = exports.VoidApiResponse = exports.JSONApiResponse = exports.canConsumeForm = exports.querystring = exports.COLLECTION_FORMATS = exports.RequiredError = exports.FetchError = exports.ResponseError = exports.BaseAPI = exports.DefaultConfig = exports.Configuration = exports.BASE_PATH = void 0;
+exports.TextApiResponse = exports.BlobApiResponse = exports.VoidApiResponse = exports.JSONApiResponse = exports.COLLECTION_FORMATS = exports.RequiredError = exports.FetchError = exports.ResponseError = exports.BaseAPI = exports.DefaultConfig = exports.Configuration = exports.BASE_PATH = void 0;
+exports.querystring = querystring;
+exports.canConsumeForm = canConsumeForm;
 exports.BASE_PATH = "https://solved.ac/api/v3".replace(/\/+$/, "");
 class Configuration {
     constructor(configuration = {}) {
@@ -246,7 +248,6 @@ function querystring(params, prefix = '') {
         .filter(part => part.length > 0)
         .join('&');
 }
-exports.querystring = querystring;
 function querystringSingleKey(key, value, keyPrefix = '') {
     const fullKey = keyPrefix + (keyPrefix.length ? `[${key}]` : key);
     if (value instanceof Array) {
@@ -274,7 +275,6 @@ function canConsumeForm(consumes) {
     }
     return false;
 }
-exports.canConsumeForm = canConsumeForm;
 class JSONApiResponse {
     constructor(raw, transformer = (jsonValue) => jsonValue) {
         this.raw = raw;

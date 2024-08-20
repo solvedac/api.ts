@@ -127,6 +127,21 @@ export const GetSearchAutoCompletionsUserEntryClassDecorationEnum = {
     Gold: 'gold'
 };
 /**
+ * @export
+ */
+export const GetUserClassStatsClassStatClassEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5,
+    NUMBER_6: 6,
+    NUMBER_7: 7,
+    NUMBER_8: 8,
+    NUMBER_9: 9,
+    NUMBER_10: 10
+};
+/**
  * solved.ac에서 지원하는 사용자 언어입니다
  * @export
  */
