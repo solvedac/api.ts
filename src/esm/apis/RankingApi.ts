@@ -16,6 +16,7 @@
 import * as runtime from '../runtime.js';
 import type {
   GetOrganizationRankingByACRating200Response,
+  GetRankingByArenaRatingInOrganization200Response,
   GetRankingByClass200Response,
   Language,
   OrganizationType,
@@ -23,6 +24,16 @@ import type {
 
 export interface GetOrganizationRankingByACRatingRequest {
     type?: OrganizationType;
+    page?: number;
+}
+
+export interface GetRankingByACRatingInOrganizationRequest {
+    organizationId: number;
+    page?: number;
+}
+
+export interface GetRankingByArenaRatingInOrganizationRequest {
+    organizationId: number;
     page?: number;
 }
 
@@ -94,6 +105,92 @@ export class RankingApi extends runtime.BaseAPI {
      */
     async getOrganizationRankingByACRating(requestParameters: GetOrganizationRankingByACRatingRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOrganizationRankingByACRating200Response> {
         const response = await this.getOrganizationRankingByACRatingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByACRatingInOrganizationRaw(requestParameters: GetRankingByACRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>> {
+        if (requestParameters['organizationId'] == null) {
+            throw new runtime.RequiredError(
+                'organizationId',
+                'Required parameter "organizationId" was null or undefined when calling getRankingByACRatingInOrganization().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['organizationId'] != null) {
+            queryParameters['organizationId'] = requestParameters['organizationId'];
+        }
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/ranking/in_organization`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 해당 단체에 속한 사용자 중에서 문제풀이 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 문제풀이 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByACRatingInOrganization(requestParameters: GetRankingByACRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response> {
+        const response = await this.getRankingByACRatingInOrganizationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByArenaRatingInOrganizationRaw(requestParameters: GetRankingByArenaRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>> {
+        if (requestParameters['organizationId'] == null) {
+            throw new runtime.RequiredError(
+                'organizationId',
+                'Required parameter "organizationId" was null or undefined when calling getRankingByArenaRatingInOrganization().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['organizationId'] != null) {
+            queryParameters['organizationId'] = requestParameters['organizationId'];
+        }
+
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/ranking/arena_in_organization`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response);
+    }
+
+    /**
+     * 해당 단체에 속한 사용자 중에서 아레나 레이팅이 높은 사용자가 먼저 오도록 정렬한 목록을 가져옵니다.
+     * 아레나 레이팅 순 단체 내 랭킹 가져오기
+     */
+    async getRankingByArenaRatingInOrganization(requestParameters: GetRankingByArenaRatingInOrganizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response> {
+        const response = await this.getRankingByArenaRatingInOrganizationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -16,12 +16,12 @@
 import * as runtime from '../runtime.cjs';
 import type {
   GetProblemsByIdList200Response,
+  GetRankingByArenaRatingInOrganization200Response,
   GetSearchAutoCompletionsSuggestion,
   Language,
   SearchProblemQueryDirection,
   SearchProblemQuerySort,
   SearchProblemTag200Response,
-  SearchUser200Response,
 } from '../models/index.cjs';
 
 export interface GetSearchAutoCompletionsRequest {
@@ -217,7 +217,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    async searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchUser200Response>> {
+    async searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>> {
         if (requestParameters['query'] == null) {
             throw new runtime.RequiredError(
                 'query',
@@ -255,7 +255,7 @@ export class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    async searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchUser200Response> {
+    async searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response> {
         const response = await this.searchUserRaw(requestParameters, initOverrides);
         return await response.value();
     }

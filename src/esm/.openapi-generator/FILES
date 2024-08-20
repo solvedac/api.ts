@@ -3,10 +3,13 @@ apis/AccountApi.ts
 apis/BackgroundApi.ts
 apis/BadgeApi.ts
 apis/CoinsApi.ts
+apis/OrganizationApi.ts
 apis/OtherApi.ts
+apis/PostApi.ts
 apis/ProblemApi.ts
 apis/RankingApi.ts
 apis/SearchApi.ts
+apis/TagApi.ts
 apis/UserApi.ts
 apis/index.ts
 index.ts

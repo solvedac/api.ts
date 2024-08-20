@@ -9,33 +9,36 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import * as runtime from '../runtime.cjs';
-import type { CoinShopProduct, GetCoinStardustExchangeRateExchangeRate, Language } from '../models/index.cjs';
-export interface GetCoinShopProductsRequest {
-    xSolvedacLanguage?: Language;
+import * as runtime from '../runtime.js';
+import type { ProblemTag, SearchProblemTag200Response } from '../models/index.js';
+export interface GetTagByKeyRequest {
+    key: string;
+}
+export interface GetTagListRequest {
+    page?: number;
 }
 /**
  *
  */
-export declare class CoinsApi extends runtime.BaseAPI {
+export declare class TagApi extends runtime.BaseAPI {
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    getCoinShopProductsRaw(requestParameters: GetCoinShopProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<CoinShopProduct>>>;
+    getTagByKeyRaw(requestParameters: GetTagByKeyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProblemTag>>;
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    getCoinShopProducts(requestParameters?: GetCoinShopProductsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<CoinShopProduct>>;
+    getTagByKey(requestParameters: GetTagByKeyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProblemTag>;
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    getCoinStardustExchangeRateRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCoinStardustExchangeRateExchangeRate>>;
+    getTagListRaw(requestParameters: GetTagListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchProblemTag200Response>>;
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    getCoinStardustExchangeRate(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCoinStardustExchangeRateExchangeRate>;
+    getTagList(requestParameters?: GetTagListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchProblemTag200Response>;
 }

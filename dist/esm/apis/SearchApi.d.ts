@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime.js';
-import type { GetProblemsByIdList200Response, GetSearchAutoCompletionsSuggestion, Language, SearchProblemQueryDirection, SearchProblemQuerySort, SearchProblemTag200Response, SearchUser200Response } from '../models/index.js';
+import type { GetProblemsByIdList200Response, GetRankingByArenaRatingInOrganization200Response, GetSearchAutoCompletionsSuggestion, Language, SearchProblemQueryDirection, SearchProblemQuerySort, SearchProblemTag200Response } from '../models/index.js';
 export interface GetSearchAutoCompletionsRequest {
     query: string;
     xSolvedacLanguage?: Language;
@@ -70,10 +70,10 @@ export declare class SearchApi extends runtime.BaseAPI {
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchUser200Response>>;
+    searchUserRaw(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRankingByArenaRatingInOrganization200Response>>;
     /**
      * 주어진 쿼리에 따라 사용자를 검색합니다.
      * 사용자 검색하기
      */
-    searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchUser200Response>;
+    searchUser(requestParameters: SearchUserRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRankingByArenaRatingInOrganization200Response>;
 }

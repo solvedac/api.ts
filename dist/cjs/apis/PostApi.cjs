@@ -36,24 +36,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CoinsApi = void 0;
+exports.PostApi = void 0;
 const runtime = __importStar(require("../runtime.cjs"));
 /**
  *
  */
-class CoinsApi extends runtime.BaseAPI {
+class PostApi extends runtime.BaseAPI {
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 제목의 게시글을 가져옵니다.
+     * 게시글 제목으로 게시글 가져오기
      */
-    async getCoinShopProductsRaw(requestParameters, initOverrides) {
+    async getPostByIdRaw(requestParameters, initOverrides) {
+        if (requestParameters['postId'] == null) {
+            throw new runtime.RequiredError('postId', 'Required parameter "postId" was null or undefined when calling getPostById().');
+        }
         const queryParameters = {};
+        if (requestParameters['postId'] != null) {
+            queryParameters['postId'] = requestParameters['postId'];
+        }
         const headerParameters = {};
         if (requestParameters['xSolvedacLanguage'] != null) {
             headerParameters['x-solvedac-language'] = String(requestParameters['xSolvedacLanguage']);
         }
         const response = await this.request({
-            path: `/coins/shop/list`,
+            path: `/post/show`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -61,35 +67,12 @@ class CoinsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response);
     }
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 제목의 게시글을 가져옵니다.
+     * 게시글 제목으로 게시글 가져오기
      */
-    async getCoinShopProducts(requestParameters = {}, initOverrides) {
-        const response = await this.getCoinShopProductsRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    async getCoinStardustExchangeRateRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/coins/exchange_rate`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response);
-    }
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    async getCoinStardustExchangeRate(initOverrides) {
-        const response = await this.getCoinStardustExchangeRateRaw(initOverrides);
+    async getPostById(requestParameters, initOverrides) {
+        const response = await this.getPostByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }
-exports.CoinsApi = CoinsApi;
+exports.PostApi = PostApi;

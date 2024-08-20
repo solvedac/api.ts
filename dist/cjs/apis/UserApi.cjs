@@ -43,6 +43,35 @@ const runtime = __importStar(require("../runtime.cjs"));
  */
 class UserApi extends runtime.BaseAPI {
     /**
+     * 해당 핸들을 가진 사용자의 부가 정보를 가져옵니다.
+     * 사용자 핸들로 부가 정보 가져오기
+     */
+    async getUserAdditionalInfoRaw(requestParameters, initOverrides) {
+        if (requestParameters['handle'] == null) {
+            throw new runtime.RequiredError('handle', 'Required parameter "handle" was null or undefined when calling getUserAdditionalInfo().');
+        }
+        const queryParameters = {};
+        if (requestParameters['handle'] != null) {
+            queryParameters['handle'] = requestParameters['handle'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/additional_info`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 핸들을 가진 사용자의 부가 정보를 가져옵니다.
+     * 사용자 핸들로 부가 정보 가져오기
+     */
+    async getUserAdditionalInfo(requestParameters, initOverrides) {
+        const response = await this.getUserAdditionalInfoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * 해당 핸들의 사용자 정보를 가져옵니다. 만약 요청자가 로그인 중이라면 라이벌 여부도 가져옵니다. 로그인 중이 아니라면 라이벌 등 로그인해야 알 수 있는 정보는 기본값 처리됩니다.
      * 사용자 핸들로 정보 가져오기
      */
@@ -72,6 +101,64 @@ class UserApi extends runtime.BaseAPI {
      */
     async getUserByHandle(requestParameters, initOverrides) {
         const response = await this.getUserByHandleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 클래스별로 나누어 가져옵니다.
+     * 클래스별로 사용자가 푼 문제 수 가져오기
+     */
+    async getUserClassStatsRaw(requestParameters, initOverrides) {
+        if (requestParameters['handle'] == null) {
+            throw new runtime.RequiredError('handle', 'Required parameter "handle" was null or undefined when calling getUserClassStats().');
+        }
+        const queryParameters = {};
+        if (requestParameters['handle'] != null) {
+            queryParameters['handle'] = requestParameters['handle'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/class_stats`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 클래스별로 나누어 가져옵니다.
+     * 클래스별로 사용자가 푼 문제 수 가져오기
+     */
+    async getUserClassStats(requestParameters, initOverrides) {
+        const response = await this.getUserClassStatsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 해당 핸들의 사용자가 기여한 문제 수를 문제 수준별로 나누어 가져옵니다.
+     * 문제 수준별로 사용자가 기여한 문제 수 가져오기
+     */
+    async getUserContributionStatsRaw(requestParameters, initOverrides) {
+        if (requestParameters['handle'] == null) {
+            throw new runtime.RequiredError('handle', 'Required parameter "handle" was null or undefined when calling getUserContributionStats().');
+        }
+        const queryParameters = {};
+        if (requestParameters['handle'] != null) {
+            queryParameters['handle'] = requestParameters['handle'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/contribution_stats`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 핸들의 사용자가 기여한 문제 수를 문제 수준별로 나누어 가져옵니다.
+     * 문제 수준별로 사용자가 기여한 문제 수 가져오기
+     */
+    async getUserContributionStats(requestParameters, initOverrides) {
+        const response = await this.getUserContributionStatsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -130,6 +217,35 @@ class UserApi extends runtime.BaseAPI {
      */
     async getUserProblemStats(requestParameters, initOverrides) {
         const response = await this.getUserProblemStatsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 태그별로 나누어 가져옵니다.
+     * 태그별로 사용자가 푼 문제 수 가져오기
+     */
+    async getUserProblemTagStatsRaw(requestParameters, initOverrides) {
+        if (requestParameters['handle'] == null) {
+            throw new runtime.RequiredError('handle', 'Required parameter "handle" was null or undefined when calling getUserProblemTagStats().');
+        }
+        const queryParameters = {};
+        if (requestParameters['handle'] != null) {
+            queryParameters['handle'] = requestParameters['handle'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/problem_tag_stats`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response);
+    }
+    /**
+     * 해당 핸들의 사용자가 푼 문제 수를 태그별로 나누어 가져옵니다.
+     * 태그별로 사용자가 푼 문제 수 가져오기
+     */
+    async getUserProblemTagStats(requestParameters, initOverrides) {
+        const response = await this.getUserProblemTagStatsRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

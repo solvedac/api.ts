@@ -15,19 +15,22 @@ import * as runtime from '../runtime.js';
 /**
  *
  */
-export class CoinsApi extends runtime.BaseAPI {
+export class TagApi extends runtime.BaseAPI {
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    async getCoinShopProductsRaw(requestParameters, initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSolvedacLanguage'] != null) {
-            headerParameters['x-solvedac-language'] = String(requestParameters['xSolvedacLanguage']);
+    async getTagByKeyRaw(requestParameters, initOverrides) {
+        if (requestParameters['key'] == null) {
+            throw new runtime.RequiredError('key', 'Required parameter "key" was null or undefined when calling getTagByKey().');
         }
+        const queryParameters = {};
+        if (requestParameters['key'] != null) {
+            queryParameters['key'] = requestParameters['key'];
+        }
+        const headerParameters = {};
         const response = await this.request({
-            path: `/coins/shop/list`,
+            path: `/tag/show`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -35,22 +38,25 @@ export class CoinsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response);
     }
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 태그 ID로 태그 정보를 가져옵니다.
+     * 태그 ID로 태그 정보 가져오기
      */
-    async getCoinShopProducts(requestParameters = {}, initOverrides) {
-        const response = await this.getCoinShopProductsRaw(requestParameters, initOverrides);
+    async getTagByKey(requestParameters, initOverrides) {
+        const response = await this.getTagByKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    async getCoinStardustExchangeRateRaw(initOverrides) {
+    async getTagListRaw(requestParameters, initOverrides) {
         const queryParameters = {};
+        if (requestParameters['page'] != null) {
+            queryParameters['page'] = requestParameters['page'];
+        }
         const headerParameters = {};
         const response = await this.request({
-            path: `/coins/exchange_rate`,
+            path: `/tag/list`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -58,11 +64,11 @@ export class CoinsApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response);
     }
     /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
+     * 태그 목록을 가져옵니다.
+     * 태그 목록 가져오기
      */
-    async getCoinStardustExchangeRate(initOverrides) {
-        const response = await this.getCoinStardustExchangeRateRaw(initOverrides);
+    async getTagList(requestParameters = {}, initOverrides) {
+        const response = await this.getTagListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }

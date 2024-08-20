@@ -11,58 +11,59 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import * as runtime from '../runtime.js';
+
+
+import * as runtime from '../runtime.cjs';
+import type {
+  Organization,
+} from '../models/index.cjs';
+
+export interface GetOrganizationByIdRequest {
+    organizationId: string;
+}
+
 /**
- *
+ * 
  */
-export class CoinsApi extends runtime.BaseAPI {
+export class OrganizationApi extends runtime.BaseAPI {
+
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 ID의 단체 정보를 가져옵니다.
+     * 단체 ID로 단체 정보 가져오기
      */
-    async getCoinShopProductsRaw(requestParameters, initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        if (requestParameters['xSolvedacLanguage'] != null) {
-            headerParameters['x-solvedac-language'] = String(requestParameters['xSolvedacLanguage']);
+    async getOrganizationByIdRaw(requestParameters: GetOrganizationByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Organization>> {
+        if (requestParameters['organizationId'] == null) {
+            throw new runtime.RequiredError(
+                'organizationId',
+                'Required parameter "organizationId" was null or undefined when calling getOrganizationById().'
+            );
         }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['organizationId'] != null) {
+            queryParameters['organizationId'] = requestParameters['organizationId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
         const response = await this.request({
-            path: `/coins/shop/list`,
+            path: `/organization/show`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
+
         return new runtime.JSONApiResponse(response);
     }
+
     /**
-     * 코인샵에서 팔고 있는 상품 목록을 가져옵니다.
-     * 코인샵 상품 목록 가져오기
+     * 해당 ID의 단체 정보를 가져옵니다.
+     * 단체 ID로 단체 정보 가져오기
      */
-    async getCoinShopProducts(requestParameters = {}, initOverrides) {
-        const response = await this.getCoinShopProductsRaw(requestParameters, initOverrides);
+    async getOrganizationById(requestParameters: GetOrganizationByIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Organization> {
+        const response = await this.getOrganizationByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    async getCoinStardustExchangeRateRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/coins/exchange_rate`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response);
-    }
-    /**
-     * 코인 → 별조각 환율을 가져옵니다.
-     * 코인 → 별조각 환율 가져오기
-     */
-    async getCoinStardustExchangeRate(initOverrides) {
-        const response = await this.getCoinStardustExchangeRateRaw(initOverrides);
-        return await response.value();
-    }
+
 }

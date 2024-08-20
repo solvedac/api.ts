@@ -561,6 +561,25 @@ export interface GetProblemsCountGroupByLevelLevelEntry {
 /**
  * 페이지네이션 가능한 쿼리의 응답 결과입니다.
  * @export
+ * @interface GetRankingByArenaRatingInOrganization200Response
+ */
+export interface GetRankingByArenaRatingInOrganization200Response {
+    /**
+     * 전체 원소 수입니다.
+     * @type {number}
+     * @memberof GetRankingByArenaRatingInOrganization200Response
+     */
+    count: number;
+    /**
+     * 현재 페이지의 원소 목록입니다.
+     * @type {Array<User>}
+     * @memberof GetRankingByArenaRatingInOrganization200Response
+     */
+    items: Array<User>;
+}
+/**
+ * 페이지네이션 가능한 쿼리의 응답 결과입니다.
+ * @export
  * @interface GetRankingByClass200Response
  */
 export interface GetRankingByClass200Response {
@@ -953,6 +972,99 @@ export type GetSearchAutoCompletionsUserEntryClassDecorationEnum = typeof GetSea
 /**
  * 
  * @export
+ * @interface GetUserClassStatsClassStat
+ */
+export interface GetUserClassStatsClassStat {
+    /**
+     * 클래스 번호입니다.
+     * @type {number}
+     * @memberof GetUserClassStatsClassStat
+     */
+    _class: GetUserClassStatsClassStatClassEnum;
+    /**
+     * solved.ac에 등록된 해당 클래스의 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserClassStatsClassStat
+     */
+    total: number;
+    /**
+     * 사용자가 푼 클래스 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserClassStatsClassStat
+     */
+    totalSolved: number;
+    /**
+     * solved.ac에 등록된 해당 클래스의 에센셜 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserClassStatsClassStat
+     */
+    essentials: number;
+    /**
+     * 사용자가 푼 클래스 에센셜 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserClassStatsClassStat
+     */
+    essentialSolved: number;
+    /**
+     * 사용자가 획득한 클래스 치장입니다.
+     * @type {string}
+     * @memberof GetUserClassStatsClassStat
+     */
+    decoration: string;
+}
+
+
+/**
+ * @export
+ */
+export const GetUserClassStatsClassStatClassEnum = {
+    NUMBER_1: 1,
+    NUMBER_2: 2,
+    NUMBER_3: 3,
+    NUMBER_4: 4,
+    NUMBER_5: 5,
+    NUMBER_6: 6,
+    NUMBER_7: 7,
+    NUMBER_8: 8,
+    NUMBER_9: 9,
+    NUMBER_10: 10
+} as const;
+export type GetUserClassStatsClassStatClassEnum = typeof GetUserClassStatsClassStatClassEnum[keyof typeof GetUserClassStatsClassStatClassEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetUserContributionStatsContributionStat
+ */
+export interface GetUserContributionStatsContributionStat {
+    /**
+     * solved.ac에 등록된 해당 수준 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserContributionStatsContributionStat
+     */
+    total: number;
+    /**
+     * 사용자가 푼 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserContributionStatsContributionStat
+     */
+    solved: number;
+    /**
+     * 사용자가 푼 표준 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserContributionStatsContributionStat
+     */
+    solvedStandards: number;
+    /**
+     * 사용자가 기여한 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserContributionStatsContributionStat
+     */
+    contributed: number;
+}
+/**
+ * 
+ * @export
  * @interface GetUserProblemStatsProblemStat
  */
 export interface GetUserProblemStatsProblemStat {
@@ -984,6 +1096,62 @@ export interface GetUserProblemStatsProblemStat {
      * 사용자가 시도해 본 문제 수입니다.
      * @type {number}
      * @memberof GetUserProblemStatsProblemStat
+     */
+    tried: number;
+}
+/**
+ * 페이지네이션 가능한 쿼리의 응답 결과입니다.
+ * @export
+ * @interface GetUserProblemTagStats200Response
+ */
+export interface GetUserProblemTagStats200Response {
+    /**
+     * 전체 원소 수입니다.
+     * @type {number}
+     * @memberof GetUserProblemTagStats200Response
+     */
+    count: number;
+    /**
+     * 현재 페이지의 원소 목록입니다.
+     * @type {Array<GetUserProblemTagStatsProblemTagStat>}
+     * @memberof GetUserProblemTagStats200Response
+     */
+    items: Array<GetUserProblemTagStatsProblemTagStat>;
+}
+/**
+ * 
+ * @export
+ * @interface GetUserProblemTagStatsProblemTagStat
+ */
+export interface GetUserProblemTagStatsProblemTagStat {
+    /**
+     * 
+     * @type {ProblemTag}
+     * @memberof GetUserProblemTagStatsProblemTagStat
+     */
+    tag: ProblemTag;
+    /**
+     * solved.ac에 등록된 해당 태그 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserProblemTagStatsProblemTagStat
+     */
+    total: number;
+    /**
+     * 사용자가 푼 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserProblemTagStatsProblemTagStat
+     */
+    solved: number;
+    /**
+     * 사용자가 부분 성공한 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserProblemTagStatsProblemTagStat
+     */
+    partial: number;
+    /**
+     * 사용자가 시도해 본 문제 수입니다.
+     * @type {number}
+     * @memberof GetUserProblemTagStatsProblemTagStat
      */
     tried: number;
 }
@@ -1114,6 +1282,43 @@ export const OrganizationType = {
 } as const;
 export type OrganizationType = typeof OrganizationType[keyof typeof OrganizationType];
 
+/**
+ * solved.ac의 게시글입니다.
+ * @export
+ * @interface Post
+ */
+export interface Post {
+    /**
+     * 게시글의 아이디입니다.
+     * @type {string}
+     * @memberof Post
+     */
+    postId: string;
+    /**
+     * 게시글의 제목입니다.
+     * @type {string}
+     * @memberof Post
+     */
+    title: string;
+    /**
+     * 게시글의 내용입니다.
+     * @type {string}
+     * @memberof Post
+     */
+    content: string;
+    /**
+     * 게시글이 작성된 언어입니다.
+     * @type {string}
+     * @memberof Post
+     */
+    language: string;
+    /**
+     * 게시글 내용의 타입입니다.
+     * @type {string}
+     * @memberof Post
+     */
+    type: string;
+}
 /**
  * 문제 정보입니다.
  * @export
@@ -1703,25 +1908,6 @@ export interface SearchProblemTag200Response {
      * @memberof SearchProblemTag200Response
      */
     items: Array<ProblemTag>;
-}
-/**
- * 페이지네이션 가능한 쿼리의 응답 결과입니다.
- * @export
- * @interface SearchUser200Response
- */
-export interface SearchUser200Response {
-    /**
-     * 전체 원소 수입니다.
-     * @type {number}
-     * @memberof SearchUser200Response
-     */
-    count: number;
-    /**
-     * 현재 페이지의 원소 목록입니다.
-     * @type {Array<User>}
-     * @memberof SearchUser200Response
-     */
-    items: Array<User>;
 }
 /**
  * solved.ac 사이트의 통계 정보입니다.
@@ -2333,6 +2519,65 @@ export const UserClassDecorationEnum = {
 } as const;
 export type UserClassDecorationEnum = typeof UserClassDecorationEnum[keyof typeof UserClassDecorationEnum];
 
+/**
+ * solved.ac 사용자 부가 정보입니다.
+ * @export
+ * @interface UserAdditionalInfo
+ */
+export interface UserAdditionalInfo {
+    /**
+     * 사용자의 국가/지역 코드입니다.
+     * @type {string}
+     * @memberof UserAdditionalInfo
+     */
+    countryCode: string;
+    /**
+     * 사용자의 성별입니다.
+     * - 0: 선택 안 함
+     * - 1: 남성
+     * - 2: 여성
+     * - 9: 기타
+     * @type {number}
+     * @memberof UserAdditionalInfo
+     */
+    gender: number;
+    /**
+     * 사용자를 영어로 표기할 때 사용하는 대명사입니다.
+     * @type {string}
+     * @memberof UserAdditionalInfo
+     */
+    pronouns: string;
+    /**
+     * 사용자의 생년입니다.
+     * @type {number}
+     * @memberof UserAdditionalInfo
+     */
+    birthYear: number;
+    /**
+     * 사용자의 생월입니다.
+     * @type {number}
+     * @memberof UserAdditionalInfo
+     */
+    birthMonth: number;
+    /**
+     * 사용자의 생일입니다.
+     * @type {number}
+     * @memberof UserAdditionalInfo
+     */
+    birthDay: number;
+    /**
+     * 사용자의 영어 이름입니다.
+     * @type {string}
+     * @memberof UserAdditionalInfo
+     */
+    name: string;
+    /**
+     * 사용자의 모국어 이름입니다.
+     * @type {string}
+     * @memberof UserAdditionalInfo
+     */
+    nameNative: string;
+}
 /**
  * 사용자 동의 여부입니다.
  * @export

@@ -62,7 +62,7 @@ export class CoinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 주어진 쿼리에 따라 문제를 검색합니다.
+     * 코인 → 별조각 환율을 가져옵니다.
      * 코인 → 별조각 환율 가져오기
      */
     async getCoinStardustExchangeRateRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCoinStardustExchangeRateExchangeRate>> {
@@ -81,7 +81,7 @@ export class CoinsApi extends runtime.BaseAPI {
     }
 
     /**
-     * 주어진 쿼리에 따라 문제를 검색합니다.
+     * 코인 → 별조각 환율을 가져옵니다.
      * 코인 → 별조각 환율 가져오기
      */
     async getCoinStardustExchangeRate(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCoinStardustExchangeRateExchangeRate> {
